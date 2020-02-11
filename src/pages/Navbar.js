@@ -6,7 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Logo from '../Group 529.png'
 import TemporaryDrawer from './Sidenav';
+<<<<<<< HEAD
 import FullScreenDialog from '../containers/login';
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> added search bar login
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +31,7 @@ export default function ButtonAppBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar >
 
           <Typography variant="h6" className={classes.title}>
             <img src={Logo} alt="logo" className='main-logo'/>

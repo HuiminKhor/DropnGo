@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import StyledNavbar from './containers/Navbar'
 import HomePage from './pages/HomePage'
 import { Route, Switch } from 'react-router-dom'
 import { Nav, NavItem, NavLink } from 'reactstrap';
@@ -26,12 +25,8 @@ function App() {
     <div className="App">
       <div className='myNavbar'>
         <ButtonAppBar />
-      </div>
-      <br />
-      </div>
-      <div>
         <CustomizedDialogs />
-        <StyledNavbar />
+     </div>
         <Switch>
           <Route exact path="/">
             <HomePage />

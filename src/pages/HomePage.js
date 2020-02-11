@@ -1,17 +1,13 @@
 import React from 'react';
 import { Jumbotron, Button, InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
 import bgimage from './woman-walking.jpg'
+import luggage from './luggage.gif'
+import search from './search.gif'
+import ticket from './ticket.gif'
+import SearchBar from '../components/Search'
 
 
 const HomePage = () => {
-
-
-
-
-
-
-
-
 
 
     return (
@@ -22,12 +18,13 @@ const HomePage = () => {
 
                     <h1 className="display-3 text-light">It's convenient for a reason</h1>
                     <p className="lead2">DROP&GO allows you leave your luggage in any partnered destination</p>
-                    <InputGroup className="px-5">
+                    <SearchBar/>
+                    {/* <InputGroup className="px-5">
                         <Input />
                         <InputGroupAddon addonType="append" >
                             <InputGroupText>Search</InputGroupText>
                         </InputGroupAddon>
-                    </InputGroup>
+                    </InputGroup> */}
                     <br />
                     <p className="lead2">
                         <Button color="primary">Use Your Current Location</Button>
@@ -47,6 +44,7 @@ const HomePage = () => {
                                         </svg>
                                     </div>
                                     <div className="about-item-descr">
+                                        <img src={search} height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>1</span></h4>
                                         <p className="about-item-text">Find a luggage storage near you</p>
                                     </div>

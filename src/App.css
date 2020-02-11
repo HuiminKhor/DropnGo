@@ -6,6 +6,7 @@ html {
 .display-3 {
   text-align: center;
 
+
 }
 .opacity {
   background-color: rgba(0, 0, 0, 0.44);
@@ -357,4 +358,15 @@ color: black !important;
   text-align: center;
 >>>>>>> Added CSS and HTML for homepage and search page
 
+}
+
+@media screen and (max-width: 480px)
+.text-title {
+    max-width: 74%;
+    margin: 0 auto 2rem;
+}
+
+@media screen and (max-width: 767px)
+.section-title {
+    margin-bottom: 1rem;
 }
