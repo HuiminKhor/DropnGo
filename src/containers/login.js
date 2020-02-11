@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react'
+// import { toast } from 'react-toastify'
+// import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,8 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
-
-
+import Axios from 'axios'
 
 
 const useStyles = makeStyles(theme => ({
@@ -34,7 +35,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function FullScreenDialog() {
+function FullScreenDialog() {
+  // let history = useHistory()
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -45,9 +48,57 @@ export default function FullScreenDialog() {
   const handleClose = () => {
     setOpen(false);
   };
+  
+  const [loginInfo, setLoginInfo] = useState({
+    email: '',
+    password: ''
+  })
 
+  const { email, password } = loginInfo
+
+  const handleInput = e => {
+    setLoginInfo({
+      ...loginInfo,
+      [e.target.name]: e.target.value
+    })
+    console.log(loginInfo)
+  }
+  const handleLogin = e => {
+    e.preventDefault()
+    Axios.post('https://dropandgo.herokuapp.com/api/v1/users/1', {
+      password: password,
+      email: email
+    })
+      .then(result => {
+        console.log(result.data)
+        console.log('Login success')
+        // const { auth_token, status, user } = result.data
+        // if (status === 'success') {
+        //   setCurrentUser({
+        //     jwt: auth_token,
+        //     user
+        //   })
+        //   localStorage.setItem('jwt', auth_token) // store jwt
+        //   handleClose()
+        //   toast('You are logged in!')
+        //   history.push(`/me`)
+        // }
+      })
+      .catch(err => {
+        console.error(err)
+        // if (err.response && err.response.data.status === 'fail') {
+        //   toast('Invalid login credentials')
+        // } else {
+        //   toast(
+        //     'Something went wrong. Please try again later, or contact our customer service.'
+        //   )
+        // }
+        // setLoading(false)
+      })
+  }
   return (
     <div>
+      <h1>{loginInfo.email}</h1>
       <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
         Login
       </Button>
@@ -69,20 +120,26 @@ export default function FullScreenDialog() {
       <div className='loginForm'>
           
         <TextField
+          name="email"
           id="outlined-textarea"
           label="Email Address"
           placeholder="Example@email.com"
           multiline
           variant="outlined"
+          value={email}
+          onChange={handleInput}
         />
         <TextField
+          name="password"
           id="outlined-textarea"
           label="Password"
           placeholder="Password required"
           multiline
           variant="outlined"
+          value={password}
+          onChange={handleInput}
         />
-        <Button variant="contained" color="primary" style={{ paddingLeft:"76px", paddingRight:"76px" , margin:"10px" }}>
+        <Button onSubmit={handleLogin} variant="contained" color="primary" style={{ paddingLeft:"76px", paddingRight:"76px" , margin:"10px" }}>
         LOG IN
         </Button>
         <h5>Already Have An Account? Login!</h5>
@@ -92,3 +149,4 @@ export default function FullScreenDialog() {
     </div>
   );
 }
+export default FullScreenDialog
