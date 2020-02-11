@@ -6,11 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Logo from '../Group 529.png'
 import TemporaryDrawer from './Sidenav';
-<<<<<<< HEAD
 import FullScreenDialog from '../containers/login';
-=======
 import { Link } from 'react-router-dom';
->>>>>>> added search bar login
 
 
 const useStyles = makeStyles(theme => ({
