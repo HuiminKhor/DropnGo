@@ -27,7 +27,7 @@ const HomePage = () => {
                     </InputGroup> */}
                     <br />
                     <p className="lead2">
-                        <Button color="primary">Use Your Current Location</Button>
+                        <Button className="current-location-btn">Use Your Current Location</Button>
                     </p>
                     </div> 
                 </Jumbotron>
@@ -40,11 +40,9 @@ const HomePage = () => {
                             <div className="col-md-3">
                                 <div className="about-item">
                                     <div className="about-item-img">
-                                        <svg className="image" viewBox="0 0 90 90">
-                                        </svg>
                                     </div>
                                     <div className="about-item-descr">
-                                        <img src={search} height="42" width="42"></img>
+                                        <img className="image-position" src={search} height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>1</span></h4>
                                         <p className="about-item-text">Find a luggage storage near you</p>
                                     </div>
@@ -54,10 +52,9 @@ const HomePage = () => {
                             <div className="col-md-3">
                                 <div className="about-item">
                                     <div className="about-item-img">
-                                        <svg className="image" viewBox="0 0 90 90">
-                                        </svg>
                                     </div>
                                     <div className="about-item-descr">
+                                        <img className="image-position" src={ticket} height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>2</span></h4>
                                         <p className="about-item-text">Proceed with online booking</p>
                                     </div>
@@ -67,10 +64,9 @@ const HomePage = () => {
                             <div className="col-md-3">
                                 <div className="about-item">
                                     <div className="about-item-img">
-                                        <svg className="image" viewBox="0 0 90 90">
-                                        </svg>
                                     </div>
                                     <div className="about-item-descr">
+                                        <img className="image-position" src={luggage} height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>3</span></h4>
                                         <p className="about-item-text">Store your baggage</p>
                                     </div>

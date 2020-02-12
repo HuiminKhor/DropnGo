@@ -13,6 +13,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 import Axios from 'axios'
+import '../App.css'
 
 
 const useStyles = makeStyles(theme => ({

@@ -5,8 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 import QrCode from './pages/qrcode'
 import UserProfile from './pages/UserProfilePage';
 import VendorCheck from './pages/Vendor'
-import ButtonAppBar from './pages/Navbar.js';
-import CustomizedDialogs from './containers/booking';
+import Navbar from './pages/Navbar.js';
 import styled from 'styled-components'
 import LuggageStorage from './pages/LuggageStorage'
 import Payment from './pages/Payment'
@@ -15,7 +14,10 @@ import Payment from './pages/Payment'
 function App() {
   const FooterColour = styled.footer`
     background: #ecf0f1;
-	  bottom: 0;
+    bottom: 0;
+    position: fixed;
+    margin-bottom: 0;
+    width: 100%;
   `;
 
 
@@ -23,8 +25,7 @@ function App() {
     <div className="App">
       
       <div className='myNavbar'>
-        <ButtonAppBar />
-        <CustomizedDialogs />
+        <Navbar />
       </div>
 
       <Switch>
@@ -47,8 +48,9 @@ function App() {
           <Payment />
         </Route>
       </Switch>
-
+      <div>
       <FooterColour>BY TEAM GO ALL RIGHT RESERVED 2020</FooterColour>
+      </div>
     </div>
   );
 }

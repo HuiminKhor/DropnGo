@@ -7,6 +7,7 @@ const StarRating = () => {
         {[...Array(5)].map((star) => {
             return <FaStar
             color= {"#ffc107"}
+            margin= {"0"}
             />
 
 

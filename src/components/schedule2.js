@@ -12,15 +12,15 @@ function BasicDateTimePicker() {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container justify="space-around">
-            <p>
+            <p></p>
             <DateTimePicker 
                 label="Drop Off"
                 inputVariant="outlined"
                 value={dropOffDate}
                 onChange={setDropOffDate}
             />
-            </p>
-            <p>
+            
+            <p></p>
 
             <DateTimePicker 
                 label="Pickup"
@@ -28,7 +28,7 @@ function BasicDateTimePicker() {
                 value={pickUpDate}
                 onChange={setPickUpDate}
             />
-            </p>
+            <p></p>
             <Typography className='numberText'>
              Luggage
             </Typography>
