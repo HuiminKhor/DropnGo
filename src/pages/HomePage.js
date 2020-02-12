@@ -11,7 +11,7 @@ const HomePage = () => {
 
 
     return (
-        <container>
+    
             <div className="mid">
                 <Jumbotron style={{ backgroundImage: `url(${bgimage})`, backgroundSize: 'cover',padding:0 }}>
                     <div className= "opacity">
@@ -82,7 +82,6 @@ const HomePage = () => {
 
             </div >
 
-        </container >
     )
 }
 
