@@ -56,6 +56,7 @@ const DialogActions = withStyles(theme => ({
 
 export default function BookingModal() {
   const [open, setOpen] = React.useState(false);
+  const [cost, setCost] = React.useState(0)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -74,8 +75,7 @@ export default function BookingModal() {
           Booking
         </DialogTitle>
         <DialogContent dividers>
-        {/* <MaterialUIPickers/> */}
-        <BasicDateTimePicker/>
+        <BasicDateTimePicker setCost={ setCost }/>
         </DialogContent>
         <DialogActions>
         <Grid container alignItems="center">
@@ -86,7 +86,7 @@ export default function BookingModal() {
           </Grid>
           <Grid item>
             <Typography gutterBottom variant="h4">
-              RM50
+              { cost }
             </Typography>
           </Grid>
         </Grid>
