@@ -2,7 +2,6 @@ import React from 'react'
 import './App.css'
 import HomePage from './pages/HomePage'
 import { Route, Switch } from 'react-router-dom'
-import QrCode from './pages/qrcode'
 import UserProfile from './pages/UserProfilePage'
 import VendorCheck from './pages/Vendor'
 import Navbar from './pages/Navbar.js'
@@ -48,9 +47,6 @@ const [color, setColor] = React.useState("");
         <Switch>
           <Route exact path="/">
             <HomePage />
-          </Route>
-          <Route path="/qr">
-            <QrCode />
           </Route>
           <Route path="/profile">
             <UserProfile />
