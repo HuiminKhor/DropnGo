@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { Table } from 'reactstrap';
 import { Card, Button, CardHeader, CardFooter, CardBody,
     CardTitle, CardText } from 'reactstrap';
 import Qrgen from '../components/qrModal'
-// import axios from 'axios'
+import axios from 'axios'
 
 const liStyle = {
     display: "flex",
@@ -24,12 +24,45 @@ const liStyle2 = {
 
 }
 
+// state = {
+//     booking: null
+// };
 
 
-const UserProfile = () => {
+// const book = () => {
+//     axios.get('http://localhost:5000/api/v1/bookings/new')
+//             .then(result => {
+//                 console.log(result)
+//                 this.setState({
+//                     booking: result.data
+//                 })
+//             })
+        
+// }
+
+// book()
+
+
+const UserProfile = (id) => {
     const [modal, setModal] = useState(false);
-
     const toggle = () => setModal(!modal);
+
+    const [mode, setMode] = useState(true)
+
+    const [booking, setBooking] = useState({})
+
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/v1/bookings/${'1'}`)
+            .then(result => {
+                console.log(result)
+                this.setBooking(
+                    result.data
+                )
+            })
+    
+    }, [])
+
 
     return(
         <div>
@@ -41,20 +74,20 @@ const UserProfile = () => {
             </div>
             <div style={{display:"flex", justifyContent:"center", marginTop:"20px", marginBottom:"20px"}}>
                 <div style={btnStyle}>
-                    <div >
-                        <button>
-                            Bookings
-                        </button>
+                    <div>
+                        <button onClick={() => setMode(true)}>
+                            Booking
+                        </button>                      
                     </div>
                     <div style={btnStyle2}>
-                        <button>
+                        <button onClick={() => setMode(false)}>
                             Upcoming Bookings
                         </button>
                     </div>
                 </div>
             </div>
-            
-            <div>
+            { mode? 
+                <div>
                 <Card style={{border:"5px solid black", marginRight:"10vw", marginLeft:"10vw", paddingTop:"20px", paddingBottom:"20px", borderRadius:"25px"}}>
                     <CardHeader style={{textAlign:"center", marginBottom: "20px"}}>Luggage at KL Sentral</CardHeader>
                     <CardBody style={{display: "flex", justifyContent: "center"}}>
@@ -86,56 +119,8 @@ const UserProfile = () => {
                     </div>
                     {/* <CardFooter style={{textAlign:"center"}}>Footer</CardFooter> */}
                 </Card>
-                {/* <ul style={liStyle}>
-
-                    <li>
-                        <div  style={btnStyle}>
-                            <div scope="row">
-                                <div>Drop off</div>
-                                <div>Pick up</div>
-                                <div>Luggage</div>
-                                <div>Status</div>
-                                <div>Price</div>
-                                <div>Address</div>
-                                <div>Operating hours</div>
-                            </div>
-                            <div scope="row" style={btnStyle2}>
-                                <div>7 am</div>
-                                <div>8 pm</div>
-                                <div>a</div>
-                                <div>b</div>
-                                <div>c</div>
-                                <div>d</div>
-                                <div>e</div>
-                            </div>
-                        </div>
-                        <div style={{display: "flex", justifyContent: "center"}}>
-                            <button>
-                                View Qr Code
-                            </button>
-                        </div> */}
-                        {/* <div>Luggage at KL Sentral</div>
-                        <div style={btnStyle}>
-                            <div>Drop Off</div>
-                            <div style={liStyle2}>7 am</div>
-                        </div>
-                        <div style={btnStyle}>
-                            <div>Pick Up</div>
-                            <div style={liStyle2}>8 am</div>
-                        </div>
-                        <div>Luggage        : 3</div>
-                        <div>Status         : 4</div>
-                        <div>Price          : 5</div>
-                        <div>Address        : 6</div>
-                        <div>Operating hours: 7</div>
-                        <div>    
-                            <button>
-                                View Qr Code
-                            </button>
-                        </div> */}
-                    {/* </li>
-                </ul> */}
-            </div>
+            </div> : <div>"anything here???</div>
+        }
         </div>
         
     )

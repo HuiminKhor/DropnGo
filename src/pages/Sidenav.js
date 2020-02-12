@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 });
 
 function SideNav({handleFsdOpen, handleLogout, loggedIn}) {
+
   const classes = useStyles();
   const [state, setState] = useState({right: false,});
 

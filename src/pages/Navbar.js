@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import Logo from '../Group 529.png'
-import SideNav from './Sidenav'
+import SideNav from './Sidenav';
 import FullScreenDialog from '../containers/login'
 import axios from 'axios'
 
@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Navbar() {
+
   const classes = useStyles();
 
   const [loggedIn, setLoggedIn] = useState(false) // Logged in state
