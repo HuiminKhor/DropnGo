@@ -33,6 +33,42 @@ function BasicDateTimePicker(props) {
       get_cost()
   }) 
 
+//   const handleData = e => {
+//     e.preventDefault()
+//     Axios.post('https://insta.nextacademy.com/api/v1/login', {
+//       dropoff: dropoff,
+//       pickup: pickup,
+//       luggage: luggage
+//     })
+
+        // .then(result => {
+        //     console.log(result.data)
+        //     console.log('Login success')
+        //     // const { auth_token, status, user } = result.data
+            // if (status === 'success') {
+            //   setCurrentUser({
+            //     jwt: auth_token,
+            //     user
+            //   })
+            //   localStorage.setItem('jwt', auth_token) // store  jwt
+            //   handleClose()
+            //   toast('You are logged in!')
+            //   history.push(`/me`)
+            // }
+        
+        // .catch(err => {
+        //     console.error(err)
+            // if (err.response && err.response.data.status === 'fail') {
+            //   toast('Invalid login credentials')
+            // } else {
+            //   toast(
+            //     'Something went wrong. Please try again later, or contact our customer service.'
+            //   )
+            // }
+            // setLoading(false)
+            // })    
+
+
   const handleInput=(e)=>{
       setLuggageNum(e.target.value)
   }
