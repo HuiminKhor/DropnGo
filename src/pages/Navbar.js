@@ -8,6 +8,7 @@ import Logo from '../Group 529.png'
 import SideNav from './Sidenav';
 import FullScreenDialog from '../containers/login'
 import axios from 'axios'
+import grey from '@material-ui/core/colors/grey';
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,7 +27,7 @@ function Navbar() {
 
   const classes = useStyles();
 
-  const [loggedIn, setLoggedIn] = useState(false) // Logged in state
+  const [loggedIn, setLoggedIn] = useState(true) // Logged in state
   const [currentUser, setCurrentUser] = useState({}) // current user
 
   const handleLogin = (e) => {
@@ -70,7 +71,7 @@ function Navbar() {
             <img src={Logo} alt="logo" className='main-logo'/>
           </Typography>
           <FullScreenDialog handleFsdClose={handleFsdClose} open={openFsd} handleLogin={handleLogin}/>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" id='dropdown'>
+          <IconButton edge="start" className={classes.menuButton} color="grey" aria-label="menu" id='dropdown'>
             <SideNav handleFsdOpen={handleFsdOpen} handleLogout={handleLogout} loggedIn={loggedIn}/>
           </IconButton>
         </Toolbar>

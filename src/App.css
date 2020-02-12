@@ -55,6 +55,29 @@ html {
   margin-left: auto;
 }
 
+.sideBarRedesign {
+  color: #40739E !important;
+  font-size: 1.6rem !important;
+
+}
+
+.sideBarButtonRedesign {
+  font-size: 1.6rem !important;
+
+}
+
+.LoginInsideButton{
+background-color: #40739E !important;
+color: white !important;
+
+}
+
+.LoginHeader{
+  background-color: #40739E !important;
+  color: white !important;
+  position: relative !important;
+
+}
 
 body {
   margin: 0;
@@ -64,12 +87,13 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
+  padding: 0;
 }
 
 .fast-check-in {
   display: flex;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 0.5rem 0;
 }
 
 .product-item.popular {
@@ -379,6 +403,7 @@ color: black !important;
 
 .about-item-text {
   font-size: 1.5rem;
+  margin-bottom: 4rem;
 
 }
 

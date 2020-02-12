@@ -1,6 +1,6 @@
 import React from 'react';
 import { Jumbotron, Button, InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
-import bgimage from './woman-walking.jpg'
+import bgimage from './woman-walking-min.jpg'
 import luggage from './luggage.gif'
 import search from './search.gif'
 import ticket from './ticket.gif'
