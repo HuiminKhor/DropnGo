@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import '../App.css';
 
 // import MaterialUIPickers from '../components/schedule';
 import BasicDateTimePicker from '../components/schedule2';
@@ -53,7 +54,7 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function CustomizedDialogs() {
+export default function BookingModal() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -65,7 +66,7 @@ export default function CustomizedDialogs() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button className="trigger-button" variant="outlined" color="primary" onClick={handleClickOpen}>
         Book Now
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>

@@ -3,6 +3,8 @@ import Select from 'react-select';
 import CITIESANDCOUNTRIES from '../constants/CitiesAndCountries';
 import axios from 'axios';
 import { SearchBarDiv } from './Styled'
+import '../App.css'
+
 
 
 const SearchBar = () => {
@@ -45,8 +47,10 @@ const SearchBar = () => {
 
     return (
         <SearchBarDiv>
-            <Select options={getLocations()} onChange={LOCATIONS => selectedLocation = LOCATIONS} />
-            <button onClick={getStores}>Find my drops</button>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+            <Select className="searchbar" options={getLocations()} onChange={LOCATIONS => selectedLocation = LOCATIONS} />
+            <button onClick={getStores}><i className="fa fa-search"></i>
+</button>
         </SearchBarDiv>
 
     )

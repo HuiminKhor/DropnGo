@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer() {
+export default function SideNav() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -37,7 +37,6 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <HouseIcon className='homeicon' style={{ fontSize: 35 }}/>  
       <Button color="primary" className="hometext">Home</Button>
       <br/>
       <Divider />
