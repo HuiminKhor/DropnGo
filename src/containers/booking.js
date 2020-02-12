@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -53,19 +53,21 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function BookingModal({setMessage,setOpen,setColor, price_per_hour}) {
-  const [open, setOpenModal] = React.useState(false);
+export default function BookingModal({ setMessage, setOpenAlert, setColor, price_per_hour }) {
+  const [openModal, setOpenModal] = React.useState(false);
   const [cost, setCost] = React.useState(0)
 
   const handleClickOpen = () => {
     setOpenModal(true);
   };
+
   const handleClose = () => {
     setOpenModal(false);
   };
+
   const handleSubmit = () => {
     setMessage("Booking Confirmed")
-    setOpen(true)
+    setOpenAlert(true)
     setColor("success")
   };
 
@@ -74,7 +76,7 @@ export default function BookingModal({setMessage,setOpen,setColor, price_per_hou
       <Button className="trigger-button" variant="outlined" color="primary" onClick={handleClickOpen}>
         Book Now
       </Button>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openModal}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose} className='dialogTitle'>
           Booking
         </DialogTitle>

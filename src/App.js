@@ -8,7 +8,7 @@ import VendorCheck from './pages/Vendor'
 import Navbar from './pages/Navbar.js'
 import styled from 'styled-components'
 import LuggageStorage from './pages/LuggageStorage'
-import Payment from './pages/Payment'
+import Payment from './components/payment'
 import Alertbar from './components/Alertbar'
 
 
@@ -27,7 +27,7 @@ color:""
 });
 
 
-const [open, setOpen] = React.useState(false);
+const [openAlert, setOpenAlert] = React.useState(false);
 const [color, setColor] = React.useState("");  
 
 
@@ -35,7 +35,7 @@ const [color, setColor] = React.useState("");
     <>
       {
         message!==""?
-        <Alertbar message={message} open={open} color={color} setOpen={setOpen}/>
+        <Alertbar message={message} open={openAlert} color={color} setOpen={setOpenAlert}/>
         : null
       }
     
@@ -59,7 +59,7 @@ const [color, setColor] = React.useState("");
             <VendorCheck />
           </Route>
           <Route path="/luggage-storage/city">
-            <LuggageStorage setMessage={setMessage} setOpen={setOpen} setColor={setColor}/>
+            <LuggageStorage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
           </Route>
           <Route path="/payment">
             <Payment />
