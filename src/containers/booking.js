@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import '../App.css';
 
-// import MaterialUIPickers from '../components/schedule';
 import BasicDateTimePicker from '../components/schedule2';
 
 const styles = theme => ({
@@ -54,15 +53,20 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function BookingModal() {
-  const [open, setOpen] = React.useState(false);
+export default function BookingModal({setMessage,setOpen,setColor, price_per_hour}) {
+  const [open, setOpenModal] = React.useState(false);
   const [cost, setCost] = React.useState(0)
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpenModal(true);
   };
   const handleClose = () => {
-    setOpen(false);
+    setOpenModal(false);
+  };
+  const handleSubmit = () => {
+    setMessage("Booking Confirmed")
+    setOpen(true)
+    setColor("success")
   };
 
   return (
@@ -75,7 +79,7 @@ export default function BookingModal() {
           Booking
         </DialogTitle>
         <DialogContent dividers>
-        <BasicDateTimePicker setCost={ setCost }/>
+        <BasicDateTimePicker price_per_hour={price_per_hour} setCost={ setCost }/>
         </DialogContent>
         <DialogActions>
         <Grid container alignItems="center">
@@ -91,7 +95,7 @@ export default function BookingModal() {
           </Grid>
         </Grid>
         </DialogActions>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
             BOOK NOW
           </Button>
       </Dialog>

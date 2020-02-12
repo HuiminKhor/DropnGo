@@ -7,7 +7,7 @@ import BookingModal from '../containers/booking';
 import axios from "axios"
 
 
-const LuggageStorage = () => {
+const LuggageStorage = ({setMessage , setOpen , setColor}) => {
 
     const [stores, setStores] = useState([])
 
@@ -94,7 +94,7 @@ const LuggageStorage = () => {
                                 { nearby }<br />
                                 { nearby2 }<br />
                               </p>
-                              <BookingModal />
+                              <BookingModal price_per_hour={price_per_hour} setMessage={setMessage} setOpen={setOpen} setColor={setColor}/>
                             </div>    
                             <div className="product-info">
                               <div className="neighborhood d-none d-md-flex">
