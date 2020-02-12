@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import '../App.css';
 
-// import MaterialUIPickers from '../components/schedule';
 import BasicDateTimePicker from '../components/schedule2';
 
 const styles = theme => ({
@@ -54,7 +53,7 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function BookingModal({setMessage,setOpen,setColor}) {
+export default function BookingModal({setMessage,setOpen,setColor, price_per_hour}) {
   const [open, setOpenModal] = React.useState(false);
   const [cost, setCost] = React.useState(0)
 
@@ -80,7 +79,7 @@ export default function BookingModal({setMessage,setOpen,setColor}) {
           Booking
         </DialogTitle>
         <DialogContent dividers>
-        <BasicDateTimePicker setCost={ setCost }/>
+        <BasicDateTimePicker price_per_hour={price_per_hour} setCost={ setCost }/>
         </DialogContent>
         <DialogActions>
         <Grid container alignItems="center">

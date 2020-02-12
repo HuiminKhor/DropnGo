@@ -94,7 +94,7 @@ const LuggageStorage = ({setMessage , setOpen , setColor}) => {
                                 { nearby }<br />
                                 { nearby2 }<br />
                               </p>
-                              <BookingModal setMessage={setMessage} setOpen={setOpen} setColor={setColor}/>
+                              <BookingModal price_per_hour={price_per_hour} setMessage={setMessage} setOpen={setOpen} setColor={setColor}/>
                             </div>    
                             <div className="product-info">
                               <div className="neighborhood d-none d-md-flex">

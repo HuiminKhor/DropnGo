@@ -1,116 +1,117 @@
 import React, { useState, useEffect } from "react";
-import { DateTimePicker,MuiPickersUtilsProvider, } from "@material-ui/pickers";
+import { DateTimePicker, MuiPickersUtilsProvider, } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { Typography } from '@material-ui/core';
 import moment from 'moment';
 
-function BasicDateTimePicker(props) {
-  const [dropOffDate, setDropOffDate] = useState(new Date());
-  const [pickUpDate, setPickUpDate] = useState(new Date());
-  const [luggageNum, setLuggageNum] = useState(1)
+function BasicDateTimePicker({ setCost, price_per_hour }) {
+    console.log(price_per_hour)
+    const [dropOffDate, setDropOffDate] = useState(new Date());
+    const [pickUpDate, setPickUpDate] = useState(new Date());
+    const [luggageNum, setLuggageNum] = useState(1)
 
-  const get_cost =()=>{
-      const start = moment(dropOffDate)
-      const end = moment(pickUpDate)
-      const duration = moment.duration(end.diff(start))
-      const hours = duration.asHours()
-      
-      console.log("hours:",hours)
-      let round = Math.floor(hours)
-      let cost;
-      if (hours > round){
-          cost = (round+1) * 5 * luggageNum
-      }
-      else{
-          cost = round * 5 *luggageNum
-      }
-      props.setCost(cost)
-      console.log("cost:",cost)
-  }
-  useEffect(() => {
-      get_cost()
-  }) 
+    const get_cost = () => {
+        const start = moment(dropOffDate)
+        const end = moment(pickUpDate)
+        const duration = moment.duration(end.diff(start))
+        const hours = duration.asHours()
 
-//   const handleData = e => {
-//     e.preventDefault()
-//     Axios.post('https://insta.nextacademy.com/api/v1/login', {
-//       dropoff: dropoff,
-//       pickup: pickup,
-//       luggage: luggage
-//     })
+        console.log("hours:", hours)
+        let round = Math.floor(hours)
+        let cost;
+        if (hours > round) {
+            cost = (round + 1) * price_per_hour * luggageNum
+        }
+        else {
+            cost = round * price_per_hour * luggageNum
+        }
+        setCost(cost)
+        console.log("cost:", cost)
+    }
+    useEffect(() => {
+        get_cost()
+    })
 
-        // .then(result => {
-        //     console.log(result.data)
-        //     console.log('Login success')
-        //     // const { auth_token, status, user } = result.data
-            // if (status === 'success') {
-            //   setCurrentUser({
-            //     jwt: auth_token,
-            //     user
-            //   })
-            //   localStorage.setItem('jwt', auth_token) // store  jwt
-            //   handleClose()
-            //   toast('You are logged in!')
-            //   history.push(`/me`)
-            // }
-        
-        // .catch(err => {
-        //     console.error(err)
-            // if (err.response && err.response.data.status === 'fail') {
-            //   toast('Invalid login credentials')
-            // } else {
-            //   toast(
-            //     'Something went wrong. Please try again later, or contact our customer service.'
-            //   )
-            // }
-            // setLoading(false)
-            // })    
+    //   const handleData = e => {
+    //     e.preventDefault()
+    //     Axios.post('https://insta.nextacademy.com/api/v1/login', {
+    //       dropoff: dropoff,
+    //       pickup: pickup,
+    //       luggage: luggage
+    //     })
+
+    // .then(result => {
+    //     console.log(result.data)
+    //     console.log('Login success')
+    //     // const { auth_token, status, user } = result.data
+    // if (status === 'success') {
+    //   setCurrentUser({
+    //     jwt: auth_token,
+    //     user
+    //   })
+    //   localStorage.setItem('jwt', auth_token) // store  jwt
+    //   handleClose()
+    //   toast('You are logged in!')
+    //   history.push(`/me`)
+    // }
+
+    // .catch(err => {
+    //     console.error(err)
+    // if (err.response && err.response.data.status === 'fail') {
+    //   toast('Invalid login credentials')
+    // } else {
+    //   toast(
+    //     'Something went wrong. Please try again later, or contact our customer service.'
+    //   )
+    // }
+    // setLoading(false)
+    // })    
 
 
-  const handleInput=(e)=>{
-      setLuggageNum(e.target.value)
-  }
-  
+    const handleInput = (e) => {
+        setLuggageNum(e.target.value)
+    }
 
-  return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container justify="space-around">
-            <p></p>
-            <DateTimePicker 
-                label="Drop Off"
-                inputVariant="outlined"
-                value={dropOffDate}
-                onChange={setDropOffDate}
-            />
-            
-            <p></p>
 
-            <DateTimePicker 
-                label="Pickup"
-                inputVariant="outlined"
-                value={pickUpDate}
-                onChange={setPickUpDate}
-            />
-            <p></p>
-            <Typography className='numberText'>
-             Luggage
+    return (
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Grid container justify="space-around">
+                <p></p>
+                <DateTimePicker
+                    label="Drop Off"
+                    inputVariant="outlined"
+                    value={dropOffDate}
+                    onChange={setDropOffDate}
+                />
+
+                <p></p>
+
+                <DateTimePicker
+                    label="Pickup"
+                    inputVariant="outlined"
+                    value={pickUpDate}
+                    onChange={setPickUpDate}
+                />
+                <p></p>
+                <Typography className='numberText'>
+                    Luggage
             </Typography>
-            <TextField className='numberfield'
-                id="outlined-number"
-                label="Number"
-                type="number"
-                InputLabelProps={{
-                    shrink: true,
-                }}
-                variant="outlined"
-                value={luggageNum}
-                onChange={handleInput}
-        />
-        </Grid>    
-    </MuiPickersUtilsProvider>
-  );
+                <TextField className='numberfield'
+                    id="outlined-number"
+                    label="Number"
+                    type="number"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                    value={luggageNum}
+                    onChange={handleInput}
+                />
+            </Grid>
+        </MuiPickersUtilsProvider>
+    );
 }
 
 export default BasicDateTimePicker;
