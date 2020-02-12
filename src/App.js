@@ -9,6 +9,7 @@ import Navbar from './pages/Navbar.js'
 import styled from 'styled-components'
 import LuggageStorage from './pages/LuggageStorage'
 import Payment from './pages/Payment'
+import Alertbar from './components/Alertbar'
 
 
 function App() {
@@ -20,38 +21,55 @@ function App() {
     width: 100%;
   `;
 
+const [message, setMessage] = React.useState({
+text:"",
+color:""
+});
+
+
+const [open, setOpen] = React.useState(false);
+const [color, setColor] = React.useState("");  
+
 
   return (
-    <div className="App">
-      
-      <div className='myNavbar'>
-        <Navbar />
-      </div>
+    <>
+      {
+        message!==""?
+        <Alertbar message={message} open={open} color={color} setOpen={setOpen}/>
+        : null
+      }
+    
+      <div className="App">
+        
+        <div className='myNavbar'>
+          <Navbar />
+        </div>
 
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/qr">
-          <QrCode />
-        </Route>
-        <Route path="/profile">
-          <UserProfile />
-        </Route>
-        <Route path="/vendor">
-          <VendorCheck />
-        </Route>
-        <Route path="/luggage-storage/city">
-          <LuggageStorage />
-        </Route>
-        <Route path="/payment">
-          <Payment />
-        </Route>
-      </Switch>
-      <div>
-      <FooterColour>BY TEAM GO ALL RIGHT RESERVED 2020</FooterColour>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/qr">
+            <QrCode />
+          </Route>
+          <Route path="/profile">
+            <UserProfile />
+          </Route>
+          <Route path="/vendor">
+            <VendorCheck />
+          </Route>
+          <Route path="/luggage-storage/city">
+            <LuggageStorage setMessage={setMessage} setOpen={setOpen} setColor={setColor}/>
+          </Route>
+          <Route path="/payment">
+            <Payment />
+          </Route>
+        </Switch>
+        <div>
+        <FooterColour>BY TEAM GO ALL RIGHT RESERVED 2020</FooterColour>
+        </div>
       </div>
-    </div>
+    </>  
   );
 }
 

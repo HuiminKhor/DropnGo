@@ -54,15 +54,20 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function BookingModal() {
-  const [open, setOpen] = React.useState(false);
+export default function BookingModal({setMessage,setOpen,setColor}) {
+  const [open, setOpenModal] = React.useState(false);
   const [cost, setCost] = React.useState(0)
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpenModal(true);
   };
   const handleClose = () => {
-    setOpen(false);
+    setOpenModal(false);
+  };
+  const handleSubmit = () => {
+    setMessage("Booking Confirmed")
+    setOpen(true)
+    setColor("success")
   };
 
   return (
@@ -91,7 +96,7 @@ export default function BookingModal() {
           </Grid>
         </Grid>
         </DialogActions>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
             BOOK NOW
           </Button>
       </Dialog>
