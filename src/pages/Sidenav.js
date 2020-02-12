@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -16,11 +16,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SideNav() {
+function SideNav({handleFsdOpen, handleLogout, loggedIn}) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    right: false,
-  });
+  const [state, setState] = useState({right: false,});
 
   const toggleDrawer = (side, open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -40,16 +38,22 @@ export default function SideNav() {
       <Button color="primary" className="hometext">Home</Button>
       <br/>
       <Divider />
-      <div>
-        <Button color="primary">Accounts</Button>
-        <br/>
-        <Button disabled>My Account</Button>
-        <br/>
-        <Button disabled>My Luggage Storage</Button>
-      </div>
-      <Divider/>
-      <Button color="secondary">Logout</Button>
-      
+      {loggedIn===false ?
+        <Button color="primary" onClick={handleFsdOpen}>Login</Button>
+      :
+        <div>
+          <div>
+            <Button color="primary">Accounts</Button>
+            <br/>
+            <Button disabled>My Account</Button>
+            <br/>
+            <Button disabled>My Luggage Storage</Button>
+          </div>
+          <Divider/>
+          <Button color="secondary" onClick={handleLogout}>Logout</Button>
+        </div>
+      }
+
     </div>
   );
 
@@ -62,3 +66,5 @@ export default function SideNav() {
     </div>
   );
 }
+
+export default SideNav;
