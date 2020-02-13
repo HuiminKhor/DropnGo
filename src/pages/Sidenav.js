@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import HouseIcon from '@material-ui/icons/House';
 import '../App.css'
+import { User } from '../App'
 
 
 
@@ -18,7 +19,10 @@ const useStyles = makeStyles({
   },
 });
 
-function SideNav({handleFsdOpen, handleLogout, loggedIn}) {
+function SideNav() {
+
+  const { currentUser, loggedIn, handleLogout, handleFsdOpen } = React.useContext(User)
+
 
   const classes = useStyles();
   const [state, setState] = useState({right: false,});

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './App.css'
 import HomePage from './pages/HomePage'
 import { Route, Switch } from 'react-router-dom'
@@ -9,29 +9,76 @@ import styled from 'styled-components'
 import LuggageStorage from './pages/LuggageStorage'
 import PaymentPage from './pages/PaymentPage'
 import Alertbar from './components/Alertbar'
+import axios from 'axios'
+
+export const User = React.createContext(null)
 
 
-function App() {
-  const FooterColour = styled.footer`
+const FooterColour = styled.footer`
     background: #ecf0f1;
     bottom: 0;
     position: fixed;
     margin-bottom: 0;
     width: 100%;
-  `;
+    `;
 
-const [message, setMessage] = React.useState({
-text:"",
-color:""
-});
+function App() {
+  
+  
+  const [loggedIn, setLoggedIn] = useState(false) // Logged in state
+  const [currentUser, setCurrentUser] = useState({}) // current user
+  
+  const [openFsd, setOpenFsd] = useState(false); // state for the FullScreenDialog (Fsd)
+  const [message, setMessage] = React.useState({
+    text:"",
+    color:""
+    });
 
 
-const [openAlert, setOpenAlert] = React.useState(false);
-const [color, setColor] = React.useState("");  
+  const [openAlert, setOpenAlert] = React.useState(false);
+  const [color, setColor] = React.useState("");  
+  
+  const handleLogin = (e) => {
+    e.preventDefault()
+    axios({
+      method: 'GET',
+      url: `https://dropandgo.herokuapp.com/api/v1/users/1`
+    })
+    .then(response => {
+        console.log(response.data)
+        setLoggedIn(true) // really need to add a loader in here
+        setCurrentUser(response.data)
+        // do something with the data returned
+    })
+    .catch(error => {
+        console.error(error.response.data.message)
+        // do something to deal with or show the error
+    })
+    handleFsdClose()
+  }
+    
+  const handleLogout = () => {
+    setLoggedIn(false)
+    setCurrentUser({})
+  }
 
+  const handleFsdOpen = () => {
+    setOpenFsd(true);
+  };
+
+  const handleFsdClose = () => {
+    setOpenFsd(false);
+  };
 
   return (
-    <>
+    <User.Provider value={{ 
+      currentUser, 
+      loggedIn, 
+      handleLogin,
+      handleLogout, 
+      handleFsdOpen, 
+      handleFsdClose,
+      openFsd }}>
       {
         message!==""?
         <Alertbar message={message} open={openAlert} color={color} setOpen={setOpenAlert}/>
@@ -41,7 +88,7 @@ const [color, setColor] = React.useState("");
       <div className="App">
         
         <div className='myNavbar'>
-          <Navbar />
+          <Navbar/>
         </div>
 
         <Switch>
@@ -65,7 +112,7 @@ const [color, setColor] = React.useState("");
         <FooterColour>BY TEAM GO ALL RIGHT RESERVED 2020</FooterColour>
         </div>
       </div>
-    </>  
+    </User.Provider>  
   );
 }
 
