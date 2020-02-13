@@ -4,6 +4,8 @@ import { Card, Button, CardHeader, CardFooter, CardBody,
     CardTitle, CardText } from 'reactstrap';
 import Qrgen from '../components/qrModal'
 import axios from 'axios'
+import '../App.css'
+
 
 const liStyle = {
     display: "flex",
@@ -70,52 +72,52 @@ const UserProfile = (id) => {
             {/* #code here for calling API to the databse so we can either use a for loop or just .map the list of bookings
             from database */}
             <div style={{textAlign:"center"}}>
-                <p>My Bookings</p>
+                <h2 className="profileBookingTitle">My Bookings</h2>
             </div>
-            <div style={{display:"flex", justifyContent:"center", marginTop:"20px", marginBottom:"20px"}}>
+            {/* <div style={{display:"flex", justifyContent:"center", marginTop:"20px", marginBottom:"20px"}}>
                 <div style={btnStyle}>
                     <div>
-                        <button onClick={() => setMode(true)}>
-                            Booking
+                        <button className="allBookingButton" onClick={() => setMode(true)}>
+                            All Booking
                         </button>                      
                     </div>
                     <div style={btnStyle2}>
-                        <button onClick={() => setMode(false)}>
+                        <button className="upcomingBookingButton" onClick={() => setMode(false)}>
                             Upcoming Bookings
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> */}
             { mode? 
                 <div>
-                <Card style={{border:"5px solid black", marginRight:"10vw", marginLeft:"10vw", paddingTop:"20px", paddingBottom:"20px", borderRadius:"25px"}}>
-                    <CardHeader style={{textAlign:"center", marginBottom: "20px"}}>Luggage at KL Sentral</CardHeader>
+                <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
+                    <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at KL Sentral</CardHeader>
                     <CardBody style={{display: "flex", justifyContent: "center"}}>
                         <div  style={btnStyle}>
                                 <div scope="row">
-                                    <div>Drop off</div>
-                                    <div>Pick up</div>
-                                    <div>Luggage</div>
-                                    <div>Status</div>
-                                    <div>Price</div>
-                                    <div>Address</div>
-                                    <div>Operating hours</div>
+                                    <div className="leftVariable">Drop off</div>
+                                    <div className="leftVariable">Pick up</div>
+                                    <div className="leftVariable">Luggage</div>
+                                    <div className="leftVariable">Status</div>
+                                    <div className="leftVariable">Price</div>
+                                    <div className="leftVariable">Address</div>
+                                    <div className="leftVariable">Operating hours</div>
                                 </div>
                                 <div scope="row" style={btnStyle2}>
-                                    <div>7 axm</div>
-                                    <div>8 pm</div>
-                                    <div>a</div>
-                                    <div>b</div>
-                                    <div>c</div>
-                                    <div>d</div>
-                                    <div>e</div>
+                                    <div className="rightVariable">Feb 6, 2020 17:15</div>
+                                    <div className="rightVariable">8 pm</div>
+                                    <div className="rightVariable">a</div>
+                                    <div className="rightVariable">b</div>
+                                    <div className="rightVariable">c</div>
+                                    <div className="rightVariable">7 eleven, KL SENTRAL </div>
+                                    <div className="rightVariable">Mon - sun, 09.15 - 22:00</div>
                                 </div>
                                 
                             </div>
                             
                     </CardBody>
                     <div style={{textAlign:"center", marginTop:"20px"}}>
-                        <Button onClick={toggle} >Go to Qr Code</Button>
+                        <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={toggle} >View Qr Code</Button>
                     </div>
                     {/* <CardFooter style={{textAlign:"center"}}>Footer</CardFooter> */}
                 </Card>

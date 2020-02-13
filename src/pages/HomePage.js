@@ -26,9 +26,9 @@ const HomePage = () => {
                         </InputGroupAddon>
                     </InputGroup> */}
                     <br />
-                    <p className="lead2">
+                    {/* <p className="lead2">
                         <Button className="current-location-btn">Use Your Current Location</Button>
-                    </p>
+                    </p> */}
                     </div> 
                 </Jumbotron>
 

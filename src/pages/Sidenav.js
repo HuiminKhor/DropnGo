@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -7,6 +7,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HouseIcon from '@material-ui/icons/House';
 import '../App.css'
 import { User } from '../App'
+import profileImage from './profileImage.jpeg'
+
 
 
 
@@ -26,6 +28,8 @@ function SideNav() {
 
   const classes = useStyles();
   const [state, setState] = useState({right: false,});
+  
+
 
   const toggleDrawer = (side, open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -42,6 +46,25 @@ function SideNav() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
+      <div className="sideBarWhole">
+          <div className="row">
+            <div className="col sideBarProfileImage">
+              <img className="profileImageT" src={profileImage} width="50px" height="50px" border-radius="10px"></img>
+
+
+            </div>
+
+            <div className="col sideBarProfileText">
+
+              <p className="sideBarProfileP">Andrew</p>
+              <p className="sideBarProfileP">andi@gmail.com</p>
+              
+            </div>
+
+
+          </div>
+             
+            </div>
       <Button className="sideBarRedesign" >Home</Button>
       <br/>
       <Divider />
@@ -52,9 +75,9 @@ function SideNav() {
           <div>
             <Button className="sideBarRedesign">Accounts</Button>
             <br/>
-            <Button  disabled className="sideBarRedesign">My Account</Button>
+            <Button  disabled className="sideBarSmaller">My Account</Button>
             <br/>
-            <Button disabled className="sideBarRedesign">My Luggage Storage</Button>
+            <Button disabled className="sideBarSmaller">My Luggage Storage</Button>
           </div>
           <Divider/>
           <Button className="sideBarButtonRedesign" color="secondary" onClick={handleLogout}>Logout</Button>

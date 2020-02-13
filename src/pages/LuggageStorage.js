@@ -4,6 +4,8 @@ import StarRating from '../components/StarRating.js'
 import BookingModal from '../containers/booking';
 import axios from "axios"
 import { useParams, useLocation } from 'react-router-dom';
+import SearchBar from '../components/Search'
+
 
 
 const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
@@ -42,6 +44,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                 <button type="submit" className="searchButton">
                   <i className="fa fa-search"></i>
                 </button>
+                {/* <SearchBar/> */}
               </div>
             </div>
             {

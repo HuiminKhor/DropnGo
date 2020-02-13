@@ -55,6 +55,29 @@ html {
   margin-left: auto;
 }
 
+
+.sideBarWhole {
+  display: flex;
+
+}
+
+.sideBarProfileText {
+  margin-top: 10px;
+
+}
+
+.sideBarProfileP {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.sideBarProfileImage {
+  flex-grow: 1;
+  margin-left: 15px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
 .sideBarRedesign {
   color: #40739E !important;
   font-size: 1.6rem !important;
@@ -64,6 +87,17 @@ html {
 .sideBarButtonRedesign {
   font-size: 1.6rem !important;
 
+}
+
+
+
+.profileImageT {
+  border-radius: 10px !important;
+
+}
+
+.sideBarSmaller {
+  font-size: 1.2rem !important;
 }
 
 .LoginInsideButton{
@@ -128,6 +162,8 @@ body {
   transition: all .2s ease-in-out; 
   color: black;
 }
+
+
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
@@ -237,6 +273,11 @@ p {
   min-width: 7rem;
   text-transform: capitalize;
   font-size: 1.3rem;
+
+}
+
+.profileBookingTitle {
+  font-weight: bold;
 
 }
 
@@ -350,6 +391,60 @@ color: black !important;
   font-size: 20px;
 }
 
+.allBookingButton {
+  border: 1px solid #40739E;
+  background: #40739E;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 0px 0px 0;
+  cursor: pointer;
+  font-weight: bold;
+  width: 150px;
+  height: 30px;
+
+}
+
+.viewQrCode {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #40739E !important;
+  background: #40739E;
+  text-align: center;
+  color: #fff !important;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+
+}
+
+.leftVariable {
+  font-weight: bold;
+  font-size: 1.5rem;
+
+}
+
+.rightVariable {
+  font-size: 1.5rem;
+
+
+}
+
+.upcomingBookingButton {
+  border: 1px solid #40739E;
+  background: #fff;
+  text-align: center;
+  color: #40739E;
+  border-radius: 0 0px 0px 0;
+  cursor: pointer;
+  font-weight: bold;
+  width: 150px;
+  height: 30px;
+
+
+
+
+}
+
 .loginForm {
   padding-top: 20px;
   display: flex;
@@ -422,7 +517,22 @@ box-shadow: 0px 2px 4px -1px rgba(0,0,0,0), 0px 4px 5px 0px rgba(0,0,0,0), 0px 1
 }
 
 .searchbar {
-  width: 80%;
+  width: 60%;
+ 
+
+}
+
+.searchNowButton {
+  background-color: #40739E;
+  border: none;
+  color: white;
+  padding: 3px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 2%;
+  font-weight: bold;
 
 }
 
