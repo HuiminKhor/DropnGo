@@ -54,7 +54,7 @@ const [color, setColor] = React.useState("");
           <Route path="/vendor">
             <VendorCheck />
           </Route>
-          <Route path="/luggage-storage/city">
+          <Route path="/luggage-storage/:city">
             <LuggageStorage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
           </Route>
           <Route path="/payment">

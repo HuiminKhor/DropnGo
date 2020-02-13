@@ -5,16 +5,21 @@ import logo from './luggage-storage-kuala-lumpur-kl-sental1139_77769.jpg'
 import StarRating from '../components/StarRating.js'
 import BookingModal from '../containers/booking';
 import axios from "axios"
+import { useParams, useLocation } from 'react-router-dom';
 
 
 const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
+
+    let params = new URLSearchParams(useLocation().search)
+    let loc = params.get('index')
+    console.log(loc)
 
     const [stores, setStores] = useState([])
 
     useEffect(()=>{
         axios({
             method: 'GET',
-            url: `https://dropandgo.herokuapp.com/api/v1/stores/?loc=1`
+            url: `https://dropandgo.herokuapp.com/api/v1/stores/?loc=${loc}`
         })
         .then(response => {
             console.log(response.data)
