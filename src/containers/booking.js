@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom'
+import axios from "axios"
 
 import '../App.css';
 
@@ -56,7 +57,7 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function BookingModal({ setMessage, setOpenAlert, setColor, price_per_hour }) {
+export default function BookingModal({ setMessage, setOpenAlert, setColor, price }) {
   let history = useHistory()
  
   const [openModal, setOpenModal] = React.useState(false);
@@ -70,43 +71,51 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     const end = moment(pickUpDate)
     const duration = moment.duration(end.diff(start))
     const hours = duration.asHours()
-
+    
     let round = Math.floor(hours)
     let cost;
-    if (hours > round) {
-        cost = (round + 1) * price_per_hour * luggageNum
+    if (moment(dropOffDate).isBefore(pickUpDate)){ 
+      if (hours > round) {
+        cost = (round + 1) * price * luggageNum
+      }
+      else {
+        cost = round * price * luggageNum
+      }
+      return cost
+    }
+    if (moment(dropOffDate).isAfter(pickUpDate)){
+      setMessage("Invalid Datetime, Please Double Confirm")
+      setOpenAlert(true)
+      setColor("error")
     }
     else {
-        cost = round * price_per_hour * luggageNum
+      return null
     }
-    
-    return cost
-}
-
+  }
   const handleClickOpen = () => {
     setOpenModal(true);
   };
-
+  
   const handleClose = () => {
     setOpenModal(false);
   };
-
   const handleSubmit = () => {
-    // amount: price_per_hour, start, end, luggage num
+    // amount: price, start, end, luggage num
     // for DB: store_id, start, end, luggage_um
     const finalCost = getCost()
     alert(finalCost)
+    setMessage("Booking Confirmed")
+    setOpenAlert(true)
+    setColor("success")
     history.push('/payment', {
       pickUpDate,
       dropOffDate,
       cost: finalCost
     })
-
-    // setMessage("Booking Confirmed")
-    // setOpenAlert(true)
-    // setColor("success")
   };
-
+  
+  
+  
   return (
     <div>
       <Button className="trigger-button" variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -135,12 +144,12 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
           </Grid>
           <Grid item>
             <Typography gutterBottom variant="h4">
-              { getCost() }
+              {  getCost() }
             </Typography>
           </Grid>
         </Grid>
         </DialogActions>
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
+          <Button variant="contained" color="primary" disabled={!moment(dropOffDate).isBefore(pickUpDate)} onClick={handleSubmit}>
             BOOK NOW
           </Button>
       </Dialog>
