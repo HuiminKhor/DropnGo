@@ -7,7 +7,7 @@ import VendorCheck from './pages/Vendor'
 import Navbar from './pages/Navbar.js'
 import styled from 'styled-components'
 import LuggageStorage from './pages/LuggageStorage'
-import Payment from './components/payment'
+import PaymentPage from './pages/PaymentPage'
 import Alertbar from './components/Alertbar'
 
 
@@ -58,7 +58,7 @@ const [color, setColor] = React.useState("");
             <LuggageStorage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
           </Route>
           <Route path="/payment">
-            <Payment />
+            <PaymentPage />
           </Route>
         </Switch>
         <div>

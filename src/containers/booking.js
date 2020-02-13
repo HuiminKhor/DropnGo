@@ -9,6 +9,9 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import moment from 'moment';
+import { useHistory } from 'react-router-dom'
+
 import '../App.css';
 
 import BasicDateTimePicker from '../components/schedule2';
@@ -54,8 +57,31 @@ const DialogActions = withStyles(theme => ({
 }))(MuiDialogActions);
 
 export default function BookingModal({ setMessage, setOpenAlert, setColor, price_per_hour }) {
+  let history = useHistory()
+ 
   const [openModal, setOpenModal] = React.useState(false);
-  const [cost, setCost] = React.useState(0)
+
+  const [dropOffDate, setDropOffDate] = useState(new Date());
+  const [pickUpDate, setPickUpDate] = useState(new Date());
+  const [luggageNum, setLuggageNum] = useState(1)
+
+  const getCost = () => {
+    const start = moment(dropOffDate)
+    const end = moment(pickUpDate)
+    const duration = moment.duration(end.diff(start))
+    const hours = duration.asHours()
+
+    let round = Math.floor(hours)
+    let cost;
+    if (hours > round) {
+        cost = (round + 1) * price_per_hour * luggageNum
+    }
+    else {
+        cost = round * price_per_hour * luggageNum
+    }
+    
+    return cost
+}
 
   const handleClickOpen = () => {
     setOpenModal(true);
@@ -66,9 +92,19 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
   };
 
   const handleSubmit = () => {
-    setMessage("Booking Confirmed")
-    setOpenAlert(true)
-    setColor("success")
+    // amount: price_per_hour, start, end, luggage num
+    // for DB: store_id, start, end, luggage_um
+    const finalCost = getCost()
+    alert(finalCost)
+    history.push('/payment', {
+      pickUpDate,
+      dropOffDate,
+      cost: finalCost
+    })
+
+    // setMessage("Booking Confirmed")
+    // setOpenAlert(true)
+    // setColor("success")
   };
 
   return (
@@ -81,7 +117,14 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
           Booking
         </DialogTitle>
         <DialogContent dividers>
-        <BasicDateTimePicker price_per_hour={price_per_hour} setCost={ setCost }/>
+        <BasicDateTimePicker 
+          setDropOffDate={setDropOffDate}
+          setPickUpDate={setPickUpDate}
+          setLuggageNum={setLuggageNum}
+          dropOffDate={dropOffDate}
+          pickUpDate={pickUpDate}
+          luggageNum={luggageNum}
+        />
         </DialogContent>
         <DialogActions>
         <Grid container alignItems="center">
@@ -92,7 +135,7 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
           </Grid>
           <Grid item>
             <Typography gutterBottom variant="h4">
-              { cost }
+              { getCost() }
             </Typography>
           </Grid>
         </Grid>
