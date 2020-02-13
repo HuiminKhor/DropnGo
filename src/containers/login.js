@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
+import { User } from '../App'
 
 
 const useStyles = makeStyles(theme => ({
@@ -34,8 +35,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function FullScreenDialog({handleFsdClose, open, handleLogin}) {
+function FullScreenDialog() {
 
+  const { handleFsdClose, openFsd, handleLogin } = React.useContext(User)
   const classes = useStyles();
 
   const [loginInfo, setLoginInfo] = useState({
@@ -55,7 +57,7 @@ function FullScreenDialog({handleFsdClose, open, handleLogin}) {
   
   return (
     <div>
-      <Dialog fullScreen open={open} onClose={handleFsdClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={openFsd} onClose={handleFsdClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} className="LoginHeader">
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleFsdClose} aria-label="close">
