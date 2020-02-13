@@ -56,13 +56,13 @@ function FullScreenDialog({handleFsdClose, open, handleLogin}) {
   return (
     <div>
       <Dialog fullScreen open={open} onClose={handleFsdClose} TransitionComponent={Transition}>
-        <AppBar className={classes.appBar}>
+        <AppBar className={classes.appBar} className="LoginHeader">
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleFsdClose} aria-label="close">
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Login
+              Login 
             </Typography>
           </Toolbar>
         </AppBar>
@@ -89,7 +89,7 @@ function FullScreenDialog({handleFsdClose, open, handleLogin}) {
               value={password}
               onChange={handleInput}
             />
-            <Button onClick={handleLogin} variant="contained" color="primary" style={{ paddingLeft: "76px", paddingRight: "76px", margin: "10px" }}>
+            <Button className="LoginInsideButton" onClick={handleLogin} variant="contained" style={{ paddingLeft: "76px", paddingRight: "76px", margin: "10px"}}>
               LOG IN
         </Button>
           </div>

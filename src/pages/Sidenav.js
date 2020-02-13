@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import HouseIcon from '@material-ui/icons/House';
+import '../App.css'
+
 
 
 const useStyles = makeStyles({
@@ -36,22 +38,22 @@ function SideNav({handleFsdOpen, handleLogout, loggedIn}) {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <Button color="primary" className="hometext">Home</Button>
+      <Button className="sideBarRedesign" >Home</Button>
       <br/>
       <Divider />
       {loggedIn===false ?
-        <Button color="primary" onClick={handleFsdOpen}>Login</Button>
+        <Button className="sideBarRedesign" color="primary" onClick={handleFsdOpen}>Login</Button>
       :
         <div>
           <div>
-            <Button color="primary">Accounts</Button>
+            <Button className="sideBarRedesign">Accounts</Button>
             <br/>
-            <Button disabled>My Account</Button>
+            <Button  disabled className="sideBarRedesign">My Account</Button>
             <br/>
-            <Button disabled>My Luggage Storage</Button>
+            <Button disabled className="sideBarRedesign">My Luggage Storage</Button>
           </div>
           <Divider/>
-          <Button color="secondary" onClick={handleLogout}>Logout</Button>
+          <Button className="sideBarButtonRedesign" color="secondary" onClick={handleLogout}>Logout</Button>
         </div>
       }
 

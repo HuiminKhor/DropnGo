@@ -1,7 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { Jumbotron, Button, InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
 import '../App.css'
-import logo from './luggage-storage-kuala-lumpur-kl-sental1139_77769.jpg'
 import StarRating from '../components/StarRating.js'
 import BookingModal from '../containers/booking';
 import axios from "axios"
@@ -47,7 +45,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               </div>
             </div>
             {
-              stores.map(({ price_per_hour, operating_day, operating_hours, star_rating, city, id, nearby, nearby2, area })=>(
+              stores.map(({ price_per_hour, operating_day, opening_hours, star_rating, city, id, nearby, nearby2, area, store_image})=>(
                 <div key={id}>
             <section className="city-result">
               <div className="container">
@@ -68,7 +66,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                         <div className="product-content">
                           <div className="product-img">
                             <picture>
-                              <img src= {logo} alt="Kuala Lumpur" height="250" width="150"></img>
+                              <img src= {store_image} alt="Kuala Lumpur" height="250" width="150"></img>
                             </picture>
                           </div>
                           <div className="product-descr-wrap">
@@ -80,16 +78,16 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                                 <h5 className="working-time-title">Operating times</h5>
                               <div className="working-time-list">
                                 <div className="working-time">
-                                  <div className="days">Mon&nbsp;-&nbsp;Sun</div>
+                                  <div className="days">{ operating_day }</div>
                                     <div className="times">
-                                      <span>00:00&nbsp;-&nbsp;23:59</span><br />
+              <span>{ opening_hours }</span><br />
                                     </div>
                                   </div>
                                 </div>
                               </div>
                               <div className="rating mt-0 mt-md-0">
                                 {/* <div className="stars-count">4.56</div> */}
-                                <StarRating/>
+                                <StarRating star_rating= {star_rating}/>
                                 <div>
                                   <div className="stars-wrap" title="4.56" data-stars="4.56"></div>
                                 {/* <div className="stars-rating" >16 Reviews</div> */}
@@ -103,8 +101,8 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                             </div>    
                             <div className="product-info">
                               <div className="neighborhood d-none d-md-flex">
-                                <strong className="neighborhood-title">Neighborhood</strong>
-                                <span className="neighborhood-name">Brickfields</span>
+                                {/* <strong className="neighborhood-title">Neighborhood</strong>
+                                <span className="neighborhood-name">Brickfields</span> */}
                               </div>
                             </div>      
                           </div>
