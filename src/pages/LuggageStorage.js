@@ -101,7 +101,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                                 { nearby }<br />
                                 { nearby2 }<br />
                               </p>
-                              <BookingModal price={price} setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
+                              <BookingModal area={area} price={price} setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
                             </div>    
                             <div className="product-info">
                               <div className="neighborhood d-none d-md-flex">
