@@ -1,13 +1,14 @@
 import React,{useState, useEffect} from 'react'
 import { Table } from 'reactstrap';
 import { Card, Button, CardHeader, CardFooter, CardBody,
-    CardTitle, CardText } from 'reactstrap';
+    CardTitle, CardText,  } from 'reactstrap';
 import Qrgen from '../components/qrModal'
 import axios from 'axios'
 import '../App.css'
 import Moment from 'react-moment';
 import { User } from '../App'
 import { useParams } from "react-router-dom"
+
 
 
 
@@ -56,10 +57,17 @@ const liStyle2 = {
 
 const UserProfile = () => {
     const { currentUser } = React.useContext(User)
-    console.log(currentUser)
+    // console.log(currentUser)
     const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);
-
+    const [id, setId] = useState(null);
+    const toggle = (id) =>{
+        setId(id)
+        setModal(!modal)
+    } 
+    const closeModal =()=>{
+        setId(null)
+        setModal(!modal)
+    }
     // const [mode, setMode] = useState(true)
 
     const [booking, setBooking] = useState([])
@@ -68,16 +76,16 @@ const UserProfile = () => {
 
     useEffect(() => {
         // axios.get(`http://localhost:5000/api/v1/bookings/?user_id=2`)
-        axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?user_id=1`)
+        axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?user_id=${currentUser.id}`)
 
             .then(result => {
                 // console.log(result)
-                console.log(currentUser)
                 setBooking(result.data)
                 // setStore(result.data.store)
             })
     
     }, [])
+    console.log(currentUser)
 
     console.log('booking is ', booking)
 
@@ -90,7 +98,9 @@ const UserProfile = () => {
             <div style={{textAlign:"center"}}>
                 <h2 className="profileBookingTitle">My Bookings</h2>
             </div>
-            
+            {
+                id ? <Qrgen modal={modal} toggle={closeModal} booking_id={id}/> :
+                <>
             { booking.map((book=>(
                 <div>
                 <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
@@ -118,13 +128,15 @@ const UserProfile = () => {
                         </div>                           
                     </CardBody>
                     <div style={{textAlign:"center", marginTop:"20px"}}>
-                        <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={toggle} >View Qr Code</Button>
+                        <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={()=>toggle(book.id)} >View Qr Code</Button>
                     </div>
                 </Card>
             </div>
              ))) 
              
                 
+        }
+        </>
         }
         </div>
         
