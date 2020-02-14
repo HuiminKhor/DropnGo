@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom'
 
 
 
-const SearchBar = () => {
+const SearchBar = ({searchClass}) => {
     let history = useHistory();
 
     const [selectedLocation, setSelectedLocation] = useState({})
@@ -43,7 +43,7 @@ const SearchBar = () => {
 
     return (
         <SearchBarDiv>
-            <Select className="searchbar" options={getLocations()} onChange={handleLocationChange} /> 
+            <Select className={searchClass} options={getLocations()} onChange={handleLocationChange} /> 
             <button onClick={getStores} className="searchNowButton">Search</button>
         </SearchBarDiv>
 

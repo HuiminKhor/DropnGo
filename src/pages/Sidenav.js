@@ -8,6 +8,7 @@ import HouseIcon from '@material-ui/icons/House';
 import '../App.css'
 import { User } from '../App'
 import profileImage from './profileImage.jpeg'
+import { Link } from 'react-router-dom';
 
 
 
@@ -46,18 +47,31 @@ function SideNav() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <div className="sideBarWhole">
+      
+      {loggedIn===false ?
+      <div>      
+        <Link to="/">
+        <Button className="sideBarRedesign" to="/">Home</Button>
+        </Link>
+            <br/>
+
+                 <Button className="sideBarRedesign" color="primary" onClick={handleFsdOpen}>Login</Button>
+
+      </div>
+      :
+        <div>
+          <div className="sideBarWhole">
           <div className="row">
             <div className="col sideBarProfileImage">
-              <img className="profileImageT" src={profileImage} width="50px" height="50px" border-radius="10px"></img>
+              <img className="profileImageT" src={currentUser.image_filename} width="50px" height="50px" border-radius="10px"></img>
 
 
             </div>
 
             <div className="col sideBarProfileText">
 
-              <p className="sideBarProfileP">Andrew</p>
-              <p className="sideBarProfileP">andi@gmail.com</p>
+              <p className="sideBarProfileP">{currentUser.name}</p>
+      <p className="sideBarProfileP">{currentUser.email}</p>
               
             </div>
 
@@ -65,19 +79,18 @@ function SideNav() {
           </div>
              
             </div>
-      <Button className="sideBarRedesign" >Home</Button>
-      <br/>
-      <Divider />
-      {loggedIn===false ?
-        <Button className="sideBarRedesign" color="primary" onClick={handleFsdOpen}>Login</Button>
-      :
-        <div>
           <div>
+          <Link to="/">
+          <Button className="sideBarRedesign" >Home</Button>
+          </Link>
+            <br/>
             <Button className="sideBarRedesign">Accounts</Button>
             <br/>
             <Button  disabled className="sideBarSmaller">My Account</Button>
             <br/>
+            <Link to="/profile">
             <Button disabled className="sideBarSmaller">My Luggage Storage</Button>
+            </Link>
           </div>
           <Divider/>
           <Button className="sideBarButtonRedesign" color="secondary" onClick={handleLogout}>Logout</Button>

@@ -8,6 +8,7 @@ import Logo from '../Group 529.png'
 import SideNav from './Sidenav';
 import FullScreenDialog from '../containers/login'
 import grey from '@material-ui/core/colors/grey';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -31,7 +32,9 @@ function Navbar() {
       <AppBar className="color-appbar" position="static">
         <Toolbar >
           <Typography variant="h6" className={classes.title}>
+            <Link to="/">
             <img src={Logo} alt="logo" className='main-logo'/>
+            </Link>
           </Typography>
           <FullScreenDialog/>
           <IconButton edge="start" className={classes.menuButton} color="grey" aria-label="menu" id='dropdown'>

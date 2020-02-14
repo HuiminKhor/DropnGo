@@ -38,14 +38,15 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-            <div className="wrap">
-              <div className="search">
+            <div>
+            <SearchBar searchClass="searchbarTwo"/>
+
+              {/* <div className="search">
                 <input type="text" className="searchTerm" placeholder="City, Address or Location"/>
                 <button type="submit" className="searchButton">
                   <i className="fa fa-search"></i>
                 </button>
-                {/* <SearchBar/> */}
-              </div>
+              </div> */}
             </div>
             {
               stores.map(({ price_per_hour, operating_day, opening_hours, star_rating, city, id, nearby, nearby2, area, store_image})=>(

@@ -278,7 +278,7 @@ p {
 
 .profileBookingTitle {
   font-weight: bold;
-
+  margin-top: 15px;
 }
 
 .times {
@@ -520,6 +520,11 @@ box-shadow: 0px 2px 4px -1px rgba(0,0,0,0), 0px 4px 5px 0px rgba(0,0,0,0), 0px 1
   width: 60%;
  
 
+
+}
+
+.searchbarTwo {
+  width: 25rem;
 }
 
 .searchNowButton {
