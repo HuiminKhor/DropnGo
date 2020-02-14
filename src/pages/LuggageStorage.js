@@ -49,7 +49,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               </div> */}
             </div>
             {
-              stores.map(({ price_per_hour, operating_day, opening_hours, star_rating, city, id, nearby, nearby2, area, store_image})=>(
+              stores.map(({ price, operating_day, opening_hours, star_rating, city, id, nearby, nearby2, area, store_image})=>(
                 <div key={id}>
             <section className="city-result">
               <div className="container">
@@ -76,7 +76,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                           <div className="product-descr-wrap">
                             <div className="product-descr">
                               <div className="product-open-wrapper">
-              <span className="product-open-title">RM{ price_per_hour }/HR</span>
+              <span className="product-open-title">RM{ price }/HR</span>
                               </div>
                               <div className="category-opening mt-1">
                                 <h5 className="working-time-title">Operating times</h5>
@@ -101,7 +101,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                                 { nearby }<br />
                                 { nearby2 }<br />
                               </p>
-                              <BookingModal price_per_hour={price_per_hour} setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
+                              <BookingModal price={price} setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
                             </div>    
                             <div className="product-info">
                               <div className="neighborhood d-none d-md-flex">
