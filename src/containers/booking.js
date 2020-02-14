@@ -92,7 +92,11 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     else {
       return null
     }
-  }
+    console.log(price_per_hour)
+    console.log(cost)
+    return cost
+}
+
   const handleClickOpen = () => {
     setOpenModal(true);
   };
@@ -111,7 +115,8 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     history.push('/payment', {
       pickUpDate,
       dropOffDate,
-      cost: finalCost
+      cost: finalCost,
+      luggageNum
     })
   };
   

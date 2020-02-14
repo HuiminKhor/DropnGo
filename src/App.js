@@ -26,7 +26,7 @@ function App() {
   
   
   const [loggedIn, setLoggedIn] = useState(false) // Logged in state
-  const [currentUser, setCurrentUser] = useState({}) // current user
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user'))) // current user
   
   const [openFsd, setOpenFsd] = useState(false); // state for the FullScreenDialog (Fsd)
   const [message, setMessage] = React.useState({
@@ -46,6 +46,7 @@ function App() {
     })
     .then(response => {
         console.log(response.data)
+        localStorage.setItem('user',JSON.stringify(response.data))
         setLoggedIn(true) // really need to add a loader in here
         setCurrentUser(response.data)
         // do something with the data returned
@@ -56,7 +57,7 @@ function App() {
     })
     handleFsdClose()
   }
-    
+  console.log(currentUser)
   const handleLogout = () => {
     setLoggedIn(false)
     setCurrentUser({})
@@ -98,7 +99,7 @@ function App() {
           <Route path="/profile">
             <UserProfile />
           </Route>
-          <Route path="/vendor">
+          <Route path="/vendor/:id">
             <VendorCheck />
           </Route>
           <Route path="/luggage-storage/:city">
