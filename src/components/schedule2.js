@@ -40,6 +40,7 @@ function BasicDateTimePicker({
                 />
                 <br/>
             </Grid>
+            <br/>
             <Grid container justify="space-around">
                 <Typography className='numberText'>
                     Luggage

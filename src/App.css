@@ -472,7 +472,7 @@ color: black !important;
 }
 
 .dropoff-column {
-  width:250px;
+  /* width:250px; */
   background-color: whitesmoke;
   opacity:0.9;
 }
@@ -487,14 +487,13 @@ color: black !important;
 .numberText {
   
   padding-right: 110px;
-  padding-top: 15px;
-  font-size: 11px !important;
-  font-weight: bolder !important; 
+  padding-top: 20px;
+  font-size: 15px !important;
+  font-weight: bolder !important;
   
 }
 
 .numberfield {
-  left: 2px;
   width: 90px;
   background-color: whitesmoke;
   opacity:0.9;
@@ -502,7 +501,7 @@ color: black !important;
 
 
 .book-button {
-  font-size: 13px !important;
+  font-size: 18px !important;
 }
 
 .MuiButton-containedPrimary {
@@ -511,6 +510,10 @@ color: black !important;
 
 .MuiButton-root {
   border-radius: 0px !important;
+}
+
+.MuiInputBase-input {
+  font-size: 15px !important;
 }
 
 .wrap{

@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom'
-import mapimg2 from './image/mapimg2.jpg'
+import mapimg from './image/mapimg.jpg'
 import { Jumbotron } from 'reactstrap'
 
 import '../App.css';
@@ -58,7 +58,7 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function BookingModal({ setMessage, setOpenAlert, setColor, price }) {
+export default function BookingModal({ setMessage, setOpenAlert, setColor, price, area }) {
   let history = useHistory()
  
   const [openModal, setOpenModal] = React.useState(false);
@@ -124,9 +124,9 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openModal}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose} className='dialogTitle'>
-          BOOKING
+          Booking To {area} 
         </DialogTitle>
-        <Jumbotron  style={{ backgroundImage: `url(${mapimg2})`, backgroundSize: 'cover',padding:0 ,fontWeight:900 }}>
+        <Jumbotron  style={{ backgroundImage: `url(${mapimg})`, backgroundSize: 'cover',padding:0 ,fontWeight:500 }}>
         <DialogContent dividers>
         <BasicDateTimePicker 
           setDropOffDate={setDropOffDate}
@@ -141,12 +141,12 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
         <DialogActions>
         <Grid container alignItems="center">
           <Grid item xs>
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="h4">
               Total:
             </Typography>
           </Grid>
           <Grid item>
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="h4">
               {  getCost() }
             </Typography>
           </Grid>
