@@ -58,7 +58,7 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function BookingModal({ setMessage, setOpenAlert, setColor, price, area }) {
+export default function BookingModal({ setMessage, setOpenAlert, setColor, price, area, store_id }) {
   let history = useHistory()
  
   const [openModal, setOpenModal] = React.useState(false);
@@ -92,7 +92,7 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     else {
       return null
     }
-    
+    console.log(cost)
     return cost
 }
 
@@ -115,7 +115,8 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
       pickUpDate,
       dropOffDate,
       cost: finalCost,
-      luggageNum
+      luggageNum,
+      store_id
     })
   };
   
