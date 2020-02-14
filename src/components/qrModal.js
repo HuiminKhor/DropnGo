@@ -13,7 +13,7 @@ const Qrgen = (props) => {
 
   return (
     <div>
-      <Modal isOpen={modal} toggle={toggle} className={className} style={{position:"absolute", top:"50%", left:"50%",  transform: "translate(-50%, -50%)"}}>
+      <Modal isOpen={modal} toggle={toggle} className={className} style={{position:"absolute", top:"30%", left:"50%",  transform: "translate(-50%, -50%)"}}>
         <ModalHeader toggle={toggle} style={{textAlign:"center"}}>Luggage Location</ModalHeader>
         <ModalBody style={{textAlign:"center"}}>
             <MyQr />

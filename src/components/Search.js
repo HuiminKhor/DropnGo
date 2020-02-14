@@ -7,7 +7,9 @@ import '../App.css'
 import { useHistory } from 'react-router-dom'
 
 
-const SearchBar = () => {
+
+
+const SearchBar = ({searchClass}) => {
     let history = useHistory();
 
     const [selectedLocation, setSelectedLocation] = useState({})
@@ -41,11 +43,12 @@ const SearchBar = () => {
 
     return (
         <SearchBarDiv>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-            <Select className="searchbar" options={getLocations()} onChange={handleLocationChange} /> 
-            <button onClick={getStores}><i className="fa fa-search"></i></button>
+            <Select className={searchClass} options={getLocations()} onChange={handleLocationChange} /> 
+            <button onClick={getStores} className="searchNowButton">Search</button>
         </SearchBarDiv>
+
     )
 }
+
 
 export default SearchBar

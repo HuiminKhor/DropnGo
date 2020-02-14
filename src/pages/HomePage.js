@@ -4,7 +4,10 @@ import bgimage from './woman-walking-min.jpg'
 import luggage from './luggage.gif'
 import search from './search.gif'
 import ticket from './ticket.gif'
+import Traveller from './Traveller.jpg'
+import '../App.css'
 import SearchBar from '../components/Search'
+
 
 
 const HomePage = () => {
@@ -18,7 +21,7 @@ const HomePage = () => {
 
                     <h1 className="display-3 text-light">It's convenient for a reason</h1>
                     <p className="lead2">DROP&GO allows you leave your luggage in any partnered destination</p>
-                    <SearchBar/>
+                    <SearchBar searchClass="searchbar"/>
                     {/* <InputGroup className="px-5">
                         <Input />
                         <InputGroupAddon addonType="append" >
@@ -26,9 +29,9 @@ const HomePage = () => {
                         </InputGroupAddon>
                     </InputGroup> */}
                     <br />
-                    <p className="lead2">
+                    {/* <p className="lead2">
                         <Button className="current-location-btn">Use Your Current Location</Button>
-                    </p>
+                    </p> */}
                     </div> 
                 </Jumbotron>
 
@@ -66,7 +69,7 @@ const HomePage = () => {
                                     <div className="about-item-img">
                                     </div>
                                     <div className="about-item-descr">
-                                        <img className="image-position" src={luggage} height="42" width="42"></img>
+                                        <img className="image-position" src={Traveller} height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>3</span></h4>
                                         <p className="about-item-text">Store your baggage</p>
                                     </div>
