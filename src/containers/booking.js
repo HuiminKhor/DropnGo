@@ -11,7 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom'
-import axios from "axios"
+import mapimg2 from './image/mapimg2.jpg'
+import { Jumbotron } from 'reactstrap'
 
 import '../App.css';
 
@@ -123,8 +124,9 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openModal}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose} className='dialogTitle'>
-          Booking
+          BOOKING
         </DialogTitle>
+        <Jumbotron  style={{ backgroundImage: `url(${mapimg2})`, backgroundSize: 'cover',padding:0 ,fontWeight:900 }}>
         <DialogContent dividers>
         <BasicDateTimePicker 
           setDropOffDate={setDropOffDate}
@@ -133,23 +135,24 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
           dropOffDate={dropOffDate}
           pickUpDate={pickUpDate}
           luggageNum={luggageNum}
-        />
+          />
         </DialogContent>
+        </Jumbotron>
         <DialogActions>
         <Grid container alignItems="center">
           <Grid item xs>
-            <Typography gutterBottom variant="h4">
+            <Typography gutterBottom variant="h5">
               Total:
             </Typography>
           </Grid>
           <Grid item>
-            <Typography gutterBottom variant="h4">
+            <Typography gutterBottom variant="h5">
               {  getCost() }
             </Typography>
           </Grid>
         </Grid>
         </DialogActions>
-          <Button variant="contained" color="primary" disabled={!moment(dropOffDate).isBefore(pickUpDate)} onClick={handleSubmit}>
+          <Button variant="contained" color="primary" disabled={!moment(dropOffDate).isBefore(pickUpDate)} onClick={handleSubmit} className="book-button" className="book-button">
             BOOK NOW
           </Button>
       </Dialog>

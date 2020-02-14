@@ -21,9 +21,9 @@ function BasicDateTimePicker({
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid container justify="space-around">
+            <Grid container justify="space-around" className="booking-column">
                 <br/>
-                <DateTimePicker
+                <DateTimePicker className="dropoff-column"
                     label="Drop Off"
                     inputVariant="outlined"
                     value={dropOffDate}
@@ -32,16 +32,18 @@ function BasicDateTimePicker({
 
                 <br/>
 
-                <DateTimePicker
+                <DateTimePicker className="pickup-column"
                     label="Pickup"
                     inputVariant="outlined"
                     value={pickUpDate}
                     onChange={setPickUpDate}
                 />
                 <br/>
+            </Grid>
+            <Grid container justify="space-around">
                 <Typography className='numberText'>
                     Luggage
-            </Typography>
+                </Typography>
                 <TextField className='numberfield'
                     id="outlined-number"
                     label="Number"
@@ -53,7 +55,7 @@ function BasicDateTimePicker({
                     value={luggageNum}
                     onChange={handleInput}
                 />
-            </Grid>
+            </Grid>    
         </MuiPickersUtilsProvider>
     );
 }
