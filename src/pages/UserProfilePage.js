@@ -5,8 +5,11 @@ import { Card, Button, CardHeader, CardFooter, CardBody,
 import Qrgen from '../components/qrModal'
 import axios from 'axios'
 import '../App.css'
-
 import Moment from 'react-moment';
+import { User } from '../App'
+import { useParams } from "react-router-dom"
+
+
 
 const liStyle = {
     display: "flex",
@@ -51,14 +54,16 @@ const liStyle2 = {
 // })
 
 
-const UserProfile = (id) => {
+const UserProfile = () => {
+    const { currentUser } = React.useContext(User)
+    console.log(currentUser)
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
-    const [mode, setMode] = useState(true)
+    // const [mode, setMode] = useState(true)
 
-    const [booking, setBooking] = useState({})
-    const [store, setStore] = useState({})
+    const [booking, setBooking] = useState([])
+    // const [store, setStore] = useState({})
 
 
     useEffect(() => {
@@ -66,17 +71,20 @@ const UserProfile = (id) => {
         axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?user_id=1`)
 
             .then(result => {
-                console.log(result)
+                // console.log(result)
+                console.log(currentUser)
                 setBooking(result.data)
-                setStore(result.data.store)
+                // setStore(result.data.store)
             })
     
     }, [])
 
+    console.log('booking is ', booking)
+
+    // let { id } = useParams()
 
     return(
         <div>
-            <Qrgen modal={modal} toggle={toggle}/>
             {/* #code here for calling API to the databse so we can either use a for loop or just .map the list of bookings
             from database */}
             <div style={{textAlign:"center"}}>
@@ -99,13 +107,13 @@ const UserProfile = (id) => {
                                     <div className="leftVariable">Operating hours</div>
                                 </div>
                                 <div scope="row" style={btnStyle2}>
-                                    <div className="rightVariable">{booking.check_in_date_time}</div>
-                                    <div className="rightVariable">{booking.check_out_date_time}</div>
-                                    <div className="rightVariable">{booking.number_of_bag}</div>
-                                    <div className="rightVariable">{booking.status}</div>
-                                    <div className="rightVariable">{booking.price}</div>
-                                    <div className="rightVariable">{store.area}</div>
-                                    <div className="rightVariable">{store.opening_hours}</div>
+                                    <div className="rightVariable">{book.check_in_date_time}</div>
+                                    <div className="rightVariable">{book.check_out_date_time}</div>
+                                    <div className="rightVariable">{book.number_of_bag}</div>
+                                    <div className="rightVariable">{book.status}</div>
+                                    <div className="rightVariable">{book.price}</div>
+                                    <div className="rightVariable">{book.store.area}</div>
+                                    <div className="rightVariable">{book.store.opening_hours}</div>
                                 </div>                 
                         </div>                           
                     </CardBody>
