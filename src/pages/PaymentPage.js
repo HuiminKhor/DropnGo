@@ -3,38 +3,46 @@ import DropIn from "braintree-web-drop-in-react";
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
 import Moment from 'react-moment';
+import { User } from '../App'
+
 
 function PaymentPage() {
+    
+    const { currentUser } = React.useContext(User)
     let instance;
     let { state } = useLocation()
 
     // if you do history.push('/payment', {a: 1, b: 2})
     // then state will be {a:1, b:2}
     console.log(state)
+    console.log(instance)
 
     const [clientToken, setClientToken] = useState(null)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/v1/payments/new')
-        // axios.get('https://dropandgo.herokuapp.com/api/v1/bookings/')
+        axios.get('https://dropandgo.herokuapp.com/api/v1/payments/new')
             .then(result => {
                 setClientToken(result.data.client_token)
             })
     }, [])
 
     const buy = () => {
+        console.log(instance)
         instance.requestPaymentMethod()
             .then(result => {
                 console.log(result)
+                console.log(result.nonce)
                 axios({
-                    url: `http://localhost:5000/api/v1/payments/pay`,
+                    url: `https://dropandgo.herokuapp.com/api/v1/bookings/inc_payment`,
                     method: 'post',
                     data: {
-                        amount: state.cost,
-                        start: state.dropOffDate,
-                        end: state.pickUpDate,
-                        luggage_num: state.luggageNum,
-                        nonce: result.nonce
+                        "user": currentUser.id,
+                        "store": state.store_id,
+                        "check_in_date_time": state.dropOffDate,
+                        "check_out_date_time": state.pickUpDate,
+                        "number_of_bag": state.luggageNum,
+                        "price": state.cost,
+                        "nonce": result.nonce
                     }
                 })
                     .then(response => {
@@ -59,7 +67,7 @@ function PaymentPage() {
             <DropIn
                 options={{ authorization: clientToken }}
                 onInstance={i => instance = i}
-        />
+            />
             <button onClick={buy}>Buy</button>
         </div>
     )

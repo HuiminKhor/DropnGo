@@ -1,7 +1,6 @@
 import React from 'react';
-import { Jumbotron, Button, InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
 import bgimage from './woman-walking-min.jpg'
-import luggage from './luggage.gif'
 import search from './search.gif'
 import ticket from './ticket.gif'
 import Traveller from './Traveller.jpg'
@@ -45,7 +44,7 @@ const HomePage = () => {
                                     <div className="about-item-img">
                                     </div>
                                     <div className="about-item-descr">
-                                        <img className="image-position" src={search} height="42" width="42"></img>
+                                        <img className="image-position" src={search} alt="step_1" height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>1</span></h4>
                                         <p className="about-item-text">Find a luggage storage near you</p>
                                     </div>
@@ -57,7 +56,7 @@ const HomePage = () => {
                                     <div className="about-item-img">
                                     </div>
                                     <div className="about-item-descr">
-                                        <img className="image-position" src={ticket} height="42" width="42"></img>
+                                        <img className="image-position" src={ticket} alt="step_2" height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>2</span></h4>
                                         <p className="about-item-text">Proceed with online booking</p>
                                     </div>
@@ -69,7 +68,7 @@ const HomePage = () => {
                                     <div className="about-item-img">
                                     </div>
                                     <div className="about-item-descr">
-                                        <img className="image-position" src={Traveller} height="42" width="42"></img>
+                                        <img className="image-position" src={Traveller} alt="step_3" height="42" width="42"></img>
                                         <h4 className="about-item-title"><span>3</span></h4>
                                         <p className="about-item-text">Store your baggage</p>
                                     </div>

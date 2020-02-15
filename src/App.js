@@ -24,10 +24,9 @@ const FooterColour = styled.footer`
 
 function App() {
   
-  
-  const [loggedIn, setLoggedIn] = useState(false) // Logged in state
   const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user'))) // current user
-  
+  const [loggedIn, setLoggedIn] = useState(currentUser ? true : false) // Logged in state
+
   const [openFsd, setOpenFsd] = useState(false); // state for the FullScreenDialog (Fsd)
   const [message, setMessage] = React.useState({
     text:"",
@@ -38,7 +37,7 @@ function App() {
   const [openAlert, setOpenAlert] = React.useState(false);
   const [color, setColor] = React.useState("");  
   
-  const handleLogin = (e) => {
+  function handleLogin (e) {
     e.preventDefault()
     axios({
       method: 'GET',
@@ -47,9 +46,8 @@ function App() {
     .then(response => {
         console.log(response.data)
         localStorage.setItem('user',JSON.stringify(response.data))
-        setLoggedIn(true) // really need to add a loader in here
         setCurrentUser(response.data)
-        // do something with the data returned
+        setLoggedIn(true) // need to wait before we do this
     })
     .catch(error => {
         console.error(error.response.data.message)
@@ -58,16 +56,19 @@ function App() {
     handleFsdClose()
   }
   console.log(currentUser)
-  const handleLogout = () => {
+  console.log(loggedIn)
+
+  function handleLogout() {
     setLoggedIn(false)
+    localStorage.removeItem('user')
     setCurrentUser({})
   }
 
-  const handleFsdOpen = () => {
+  function handleFsdOpen() {
     setOpenFsd(true);
   };
 
-  const handleFsdClose = () => {
+  function handleFsdClose() {
     setOpenFsd(false);
   };
 

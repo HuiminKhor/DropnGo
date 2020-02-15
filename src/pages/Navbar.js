@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton'
 import Logo from '../Group 529.png'
 import SideNav from './Sidenav';
 import FullScreenDialog from '../containers/login'
-import grey from '@material-ui/core/colors/grey';
 import { Link } from 'react-router-dom';
 
 
@@ -37,7 +36,7 @@ function Navbar() {
             </Link>
           </Typography>
           <FullScreenDialog/>
-          <IconButton edge="start" className={classes.menuButton} color="grey" aria-label="menu" id='dropdown'>
+          <IconButton edge="start" className={classes.menuButton} color="primary" aria-label="menu" id='dropdown'>
             <SideNav/>
           </IconButton>
         </Toolbar>

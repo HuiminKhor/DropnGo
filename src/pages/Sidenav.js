@@ -1,14 +1,14 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
-import HouseIcon from '@material-ui/icons/House';
 import '../App.css'
 import { User } from '../App'
-import profileImage from './profileImage.jpeg'
 import { Link } from 'react-router-dom';
+// import HouseIcon from '@material-ui/icons/House';
+// import profileImage from './profileImage.jpeg'
 
 
 
@@ -63,7 +63,7 @@ function SideNav() {
           <div className="sideBarWhole">
           <div className="row">
             <div className="col sideBarProfileImage">
-              <img className="profileImageT" src={currentUser.image_filename} width="50px" height="50px" border-radius="10px"></img>
+              <img className="profileImageT" src={currentUser.image_filename} alt="profile_image" width="50px" height="50px" border-radius="10px"></img>
 
 
             </div>

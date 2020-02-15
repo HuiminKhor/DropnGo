@@ -58,7 +58,8 @@ function FullScreenDialog() {
   return (
     <div>
       <Dialog fullScreen open={openFsd} onClose={handleFsdClose} TransitionComponent={Transition}>
-        <AppBar className={classes.appBar} className="LoginHeader">
+        <AppBar className={classes.appBar}>
+        {/* REMOVED className="LoginHeader" from line above to resolve error */}
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleFsdClose} aria-label="close">
               <CloseIcon />

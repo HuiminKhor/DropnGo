@@ -3,7 +3,7 @@ import '../App.css'
 import StarRating from '../components/StarRating.js'
 import BookingModal from '../containers/booking';
 import axios from "axios"
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import SearchBar from '../components/Search'
 
 
@@ -30,16 +30,14 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
             console.error(error.response.data.message)
             // do something to deal with or show the error
         })
-    },[])
-
-
+    },[loc])
 
 
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
             <div>
-            <SearchBar searchClass="searchbarTwo"/>
+            <SearchBar searchClass="searchbarTwo" loc={loc}/>
 
               {/* <div className="search">
                 <input type="text" className="searchTerm" placeholder="City, Address or Location"/>
@@ -91,7 +89,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                               </div>
                               <div className="rating mt-0 mt-md-0">
                                 {/* <div className="stars-count">4.56</div> */}
-                                <StarRating star_rating= {star_rating}/>
+                                <StarRating star_rating={star_rating}/>
                                 <div>
                                   <div className="stars-wrap" title="4.56" data-stars="4.56"></div>
                                 {/* <div className="stars-rating" >16 Reviews</div> */}
@@ -101,7 +99,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                                 { nearby }<br />
                                 { nearby2 }<br />
                               </p>
-                              <BookingModal area={area} price={price} setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
+                              <BookingModal area={area} price={price} setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor} store_id={id}/>
                             </div>    
                             <div className="product-info">
                               <div className="neighborhood d-none d-md-flex">
