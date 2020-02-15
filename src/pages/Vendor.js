@@ -16,11 +16,33 @@ const VendorCheck = () => {
 
     let { id } = useParams()
 
-    const [check, setcheck] = useState(false);
+    const [check, setCheck] = useState(false);
     const [booking, setBooking] = useState([])
 
+    // const toggle = () =>{setcheck(!check)}
 
-    const toggle = () => setcheck(!check);
+    const checkIn = () => {
+        // to handle check in
+        axios({
+            url: `http://dropandgo.herokuapp.com/api/v1/bookings/${id}/update/?status=2`,
+            method: 'get',
+        })
+        .then(result =>{
+            console.log("Luggage has been checked in!")
+            setCheck(!check)
+        })
+    }
+
+    const checkOut = () => {
+        axios({
+            url: `http://dropandgo.herokuapp.com/api/v1/bookings/${id}/update/?status=3`,
+            method: 'get',
+        })
+        .then(result =>{
+            console.log("This job is complete!")
+        })
+    }
+    
 
     useEffect(() => {
         // axios.get(`http://localhost:5000/api/v1/bookings/?user_id=2`)
@@ -34,7 +56,7 @@ const VendorCheck = () => {
     
     }, [id])
 
-    console.log(booking[0])
+    // console.log(booking[0])
 
     return (
         <div>
@@ -83,13 +105,13 @@ const VendorCheck = () => {
                             
                     </CardBody>
                     <div style={{textAlign:"center", marginTop:"20px"}}>
-                        <Button onClick={toggle} >
+                        
                             {
                                 check ? 
-                                "Check Out" :
-                                "Check In"
+                                <Button onClick={checkOut} >Check Out</Button> :
+                                <Button onClick={checkIn} >Check In</Button>
                             }
-                        </Button>
+                        
                     </div>
                     {/* <CardFooter style={{textAlign:"center"}}>Footer</CardFooter> */}
                 </Card>
