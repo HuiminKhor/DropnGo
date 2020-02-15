@@ -7,6 +7,7 @@ import { User } from '../App'
 
 
 function PaymentPage({setMessage, setOpenAlert, setColor}) {
+    const [instance, setInstance] = useState(null)
     
     const [instance, setInstance] = useState(null)
     const { currentUser } = React.useContext(User)
