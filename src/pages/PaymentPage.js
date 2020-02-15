@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import { User } from '../App'
 
 
-function PaymentPage() {
+function PaymentPage({setMessage, setOpenAlert, setColor}) {
     
     const [instance, setInstance] = useState(null)
     const { currentUser } = React.useContext(User)
@@ -19,6 +19,7 @@ function PaymentPage() {
     console.log(state)
     console.log(instance)
 
+
     useEffect(() => {
         axios.get('https://dropandgo.herokuapp.com/api/v1/payments/new')
             .then(result => {
@@ -26,13 +27,14 @@ function PaymentPage() {
             })
     }, [])
 
+    
     const buy = () => {
         console.log(instance)
         instance.requestPaymentMethod()
-            .then(result => {
-                console.log(result)
-                console.log(result.nonce)
-                axios({
+        .then(result => {
+            console.log(result)
+            console.log(result.nonce)
+            axios({
                     url: `https://dropandgo.herokuapp.com/api/v1/bookings/inc_payment`,
                     method: 'post',
                     data: {
@@ -46,6 +48,9 @@ function PaymentPage() {
                     }
                 })
                     .then(response => {
+                        setMessage("Booking Confirmed")
+                        setOpenAlert(true)
+                        setColor("success")
                         console.log(response) // {success: true or false}
                     })
             })
@@ -54,8 +59,9 @@ function PaymentPage() {
     if (!state) {
         return 'You can only access this page from booking page'
     }
-
+    
     if (!clientToken) return 'Loading...'
+       
 
     return (
         <div>
