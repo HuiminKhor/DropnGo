@@ -35,7 +35,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function FullScreenDialog() {
+function FullScreenDialog(setMessage, setOpenAlert, setColor) {
 
   const { handleFsdClose, openFsd, handleLogin } = React.useContext(User)
   const classes = useStyles();
@@ -54,7 +54,8 @@ function FullScreenDialog() {
     })
     console.log(loginInfo)
   }
-  
+
+ 
   return (
     <div>
       <Dialog fullScreen open={openFsd} onClose={handleFsdClose} TransitionComponent={Transition}>

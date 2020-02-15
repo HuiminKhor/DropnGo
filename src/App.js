@@ -48,6 +48,9 @@ function App() {
         localStorage.setItem('user',JSON.stringify(response.data))
         setCurrentUser(response.data)
         setLoggedIn(true) // need to wait before we do this
+        setMessage("Login Successful")
+        setOpenAlert(true)
+        setColor("success")
     })
     .catch(error => {
         console.error(error.response.data.message)
@@ -60,6 +63,9 @@ function App() {
     setLoggedIn(false)
     localStorage.removeItem('user')
     setCurrentUser({})
+    setMessage("Logout Successful")
+    setOpenAlert(true)
+    setColor("info")
   }
 
   function handleFsdOpen() {
@@ -105,7 +111,7 @@ function App() {
             <LuggageStorage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
           </Route>
           <Route path="/payment">
-            <PaymentPage />
+            <PaymentPage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
           </Route>
         </Switch>
         <div>

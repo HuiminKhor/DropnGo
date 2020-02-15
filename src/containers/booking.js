@@ -92,10 +92,7 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     else {
       return null
     }
-<<<<<<< HEAD
     console.log(cost)
-=======
->>>>>>> added opacity to the image and some font size to the calendar
     return cost
 }
 
@@ -110,9 +107,6 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     // amount: price, start, end, luggage num
     // for DB: store_id, start, end, luggage_um
     const finalCost = getCost()
-    setMessage("Booking Confirmed")
-    setOpenAlert(true)
-    setColor("success")
     history.push('/payment', {
       pickUpDate,
       dropOffDate,
