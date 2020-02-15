@@ -34,7 +34,7 @@ const SearchBar = ({ searchClass, loc }) => {
     }
 
     const getStores = (e) => {
-        if (selectedLocation !== {}) {
+        if (selectedLocation.length !== 0) {
             console.log(selectedLocation)
             e.preventDefault()
             let path = `/luggage-storage/${selectedLocation.city}?index=${selectedLocation.value}`;

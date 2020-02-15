@@ -15,6 +15,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
     console.log(loc)
 
     const [stores, setStores] = useState([])
+    const [locError, setLocError] = useState("")
 
     useEffect(()=>{
         axios({
@@ -28,9 +29,14 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
         })
         .catch(error => {
             console.error(error.response.data.message)
+            setLocError(error.response.data.message)
+            setStores([])
             // do something to deal with or show the error
         })
     },[loc])
+
+    console.log(stores)
+    console.log(locError)
 
 
     return (
@@ -46,7 +52,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                 </button>
               </div> */}
             </div>
-            {
+            { stores.length !== 0 ?
               stores.map(({ price, operating_day, opening_hours, star_rating, city, id, nearby, nearby2, area, store_image})=>(
                 <div key={id}>
             <section className="city-result">
@@ -116,7 +122,10 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               </div>
           </section>
                 </div>
+                
               ))
+              : 
+              <div>{locError === "Store doesn't exist" ? "Sorry, there are no stores for that location" : null }</div>
             }
 
         </div>

@@ -6,7 +6,7 @@ const StarRating = ({star_rating}) => {
     return ( 
     <div>
         {[...Array(5)].map((star, i) => (
-            <>
+            <React.Fragment key={i}>
             {   
                 i < ratings ? <FaStar
                 color= "#ffc107"
@@ -17,7 +17,7 @@ const StarRating = ({star_rating}) => {
                 margin= {"0"}
                 />
             }
-            </>
+            </React.Fragment>
         )
             
 
