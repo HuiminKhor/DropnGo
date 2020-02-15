@@ -105,7 +105,7 @@ function App() {
             <UserProfile />
           </Route>
           <Route path="/vendor/:id">
-            <VendorCheck />
+            <VendorCheck setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
           </Route>
           <Route path="/luggage-storage/:city">
             <LuggageStorage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
