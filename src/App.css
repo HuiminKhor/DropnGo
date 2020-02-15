@@ -516,6 +516,37 @@ color: black !important;
   font-size: 15px !important;
 }
 
+/* editing the number font in calendar */
+.MuiTypography-body2 {
+  font-size: 1.3rem !important;
+}
+
+/* editing the day font in calendar */
+.MuiTypography-caption {
+  font-size: 1.7rem !important;
+}
+
+/* editing the month font in calendar */
+.MuiTypography-body1 {
+  font-size: 1.3rem !important;
+}
+
+/* editing the title font in calendar */
+.MuiTypography-subtitle1 {
+  font-size: 1.3rem !important;
+} 
+
+/* editing the title for booking */
+.MuiTypography-h6 {
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+}
+
+/* editing the icon font in calendar */
+.MuiSvgIcon-root {
+  font-size: 2rem !important;
+}
+
 .wrap{
   width: 50%;
   position: relative;
