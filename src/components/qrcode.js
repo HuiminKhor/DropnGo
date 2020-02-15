@@ -1,6 +1,5 @@
 import React from 'react'
 import QRCode from 'qrcode.react'
-import { Link } from 'react-router-dom'
 
 
 const MyQr = (props) => {

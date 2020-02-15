@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Card, Button, CardHeader, CardBody } from 'reactstrap';
+import Qrgen from '../components/qrModal'
 import axios from 'axios'
 import '../App.css'
 import { User } from '../App'
