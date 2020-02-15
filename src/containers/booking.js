@@ -157,7 +157,7 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
           </Grid>
         </Grid>
         </DialogActions>
-          <Button variant="contained" color="primary" disabled={!moment(dropOffDate).isBefore(pickUpDate)} onClick={handleSubmit} className="book-button" className="book-button">
+          <Button variant="contained" color="primary" disabled={!moment(dropOffDate).isBefore(pickUpDate)} onClick={handleSubmit} className="book-button">
             BOOK NOW
           </Button>
       </Dialog>

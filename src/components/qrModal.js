@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React from 'react';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import MyQr from '../components/qrcode'
 
 
 const Qrgen = (props) => {
   const {
-    buttonLabel,
-    className,modal,toggle, booking_id
+    className,
+    modal,
+    toggle,
+    booking_id
   } = props;
 
 

@@ -1,21 +1,21 @@
-import React,{useState, useEffect} from 'react'
-import { Table } from 'reactstrap';
-import { Card, Button, CardHeader, CardFooter, CardBody,
-    CardTitle, CardText,  } from 'reactstrap';
-import Qrgen from '../components/qrModal'
+import React, {useState, useEffect} from 'react'
+import { Card, Button, CardHeader, CardBody } from 'reactstrap';
 import axios from 'axios'
 import '../App.css'
-import Moment from 'react-moment';
 import { User } from '../App'
-import { useParams } from "react-router-dom"
 
 
 
+// const liStyle = {
+//     display: "flex",
+//     listStyleType: "none"
+// }
 
-const liStyle = {
-    display: "flex",
-    listStyleType: "none"
-}
+// const liStyle2 = {
+//     display:"flex",
+//     marginLeft:"20px"
+
+// }
 
 const btnStyle = {
     display:"flex"
@@ -23,12 +23,6 @@ const btnStyle = {
 
 const btnStyle2 = {
     marginLeft:"20px"
-}
-
-const liStyle2 = {
-    display:"flex",
-    marginLeft:"20px"
-
 }
 
 // state = {
@@ -84,8 +78,7 @@ const UserProfile = () => {
                 // setStore(result.data.store)
             })
     
-    }, [])
-    console.log(currentUser)
+    }, [currentUser])
 
     console.log('booking is ', booking)
 

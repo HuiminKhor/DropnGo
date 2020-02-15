@@ -15,6 +15,7 @@ function PaymentPage() {
     // if you do history.push('/payment', {a: 1, b: 2})
     // then state will be {a:1, b:2}
     console.log(state)
+    console.log(instance)
 
     const [clientToken, setClientToken] = useState(null)
 
@@ -66,7 +67,7 @@ function PaymentPage() {
             <DropIn
                 options={{ authorization: clientToken }}
                 onInstance={i => instance = i}
-        />
+            />
             <button onClick={buy}>Buy</button>
         </div>
     )
