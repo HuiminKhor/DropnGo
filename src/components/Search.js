@@ -24,7 +24,6 @@ const SearchBar = ({ searchClass, loc }) => {
                 label: location.city + ', ' + location.country
             }
         })
-        console.log(LOCATIONS)
         return LOCATIONS;
     }
 
@@ -34,8 +33,7 @@ const SearchBar = ({ searchClass, loc }) => {
     }
 
     const getStores = (e) => {
-        if (selectedLocation !== {}) {
-            console.log(selectedLocation)
+        if (selectedLocation.length !== 0) {
             e.preventDefault()
             let path = `/luggage-storage/${selectedLocation.city}?index=${selectedLocation.value}`;
             history.push(path);

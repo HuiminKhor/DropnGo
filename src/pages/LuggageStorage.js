@@ -12,9 +12,9 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
 
     let params = new URLSearchParams(useLocation().search)
     let loc = params.get('index')
-    console.log(loc)
 
     const [stores, setStores] = useState([])
+    const [locError, setLocError] = useState("")
 
     useEffect(()=>{
         axios({
@@ -22,12 +22,12 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
             url: `https://dropandgo.herokuapp.com/api/v1/stores/?loc=${loc}`
         })
         .then(response => {
-            console.log(response.data)
             setStores(response.data)
             // do something with the data returned
         })
         .catch(error => {
-            console.error(error.response.data.message)
+            setLocError(error.response.data.message)
+            setStores([])
             // do something to deal with or show the error
         })
     },[loc])
@@ -46,7 +46,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                 </button>
               </div> */}
             </div>
-            {
+            { stores.length !== 0 ?
               stores.map(({ price, operating_day, opening_hours, star_rating, city, id, nearby, nearby2, area, store_image})=>(
                 <div key={id}>
             <section className="city-result">
@@ -116,7 +116,10 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               </div>
           </section>
                 </div>
+                
               ))
+              : 
+              <div>{locError === "Store doesn't exist" ? "Sorry, there are no stores for that location" : null }</div>
             }
 
         </div>

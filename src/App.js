@@ -55,8 +55,6 @@ function App() {
     })
     handleFsdClose()
   }
-  console.log(currentUser)
-  console.log(loggedIn)
 
   function handleLogout() {
     setLoggedIn(false)
