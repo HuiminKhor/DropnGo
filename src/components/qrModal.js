@@ -9,12 +9,11 @@ const Qrgen = (props) => {
     className,modal,toggle, booking_id
   } = props;
 
-  
 
   return (
     <div>
-      <h1>{props.booking_id}</h1>
-      <MyQr id={booking_id}/>
+      {/* <h1>{props.booking_id}</h1>
+      <MyQr id={booking_id}/> */}
       <Modal isOpen={modal} toggle={toggle} className={className} style={{position:"absolute", top:"50%", left:"50%",  transform: "translate(-50%, -50%)"}}>
         <ModalHeader toggle={toggle} style={{textAlign:"center"}}>Luggage Location</ModalHeader>
         <ModalBody style={{textAlign:"center"}}>

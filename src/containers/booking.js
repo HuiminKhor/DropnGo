@@ -92,8 +92,7 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     else {
       return null
     }
-    console.log(price_per_hour)
-    console.log(cost)
+    
     return cost
 }
 
