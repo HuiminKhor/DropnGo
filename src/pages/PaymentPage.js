@@ -8,16 +8,16 @@ import { User } from '../App'
 
 function PaymentPage() {
     
+    const [instance, setInstance] = useState(null)
     const { currentUser } = React.useContext(User)
-    let instance;
+    const [clientToken, setClientToken] = useState(null)
+   
     let { state } = useLocation()
 
     // if you do history.push('/payment', {a: 1, b: 2})
     // then state will be {a:1, b:2}
     console.log(state)
     console.log(instance)
-
-    const [clientToken, setClientToken] = useState(null)
 
     useEffect(() => {
         axios.get('https://dropandgo.herokuapp.com/api/v1/payments/new')
@@ -66,7 +66,7 @@ function PaymentPage() {
 
             <DropIn
                 options={{ authorization: clientToken }}
-                onInstance={i => instance = i}
+                onInstance={i => {setInstance(i)}}
             />
             <button onClick={buy}>Buy</button>
         </div>

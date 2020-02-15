@@ -12,7 +12,6 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
 
     let params = new URLSearchParams(useLocation().search)
     let loc = params.get('index')
-    console.log(loc)
 
     const [stores, setStores] = useState([])
     const [locError, setLocError] = useState("")
@@ -23,20 +22,15 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
             url: `https://dropandgo.herokuapp.com/api/v1/stores/?loc=${loc}`
         })
         .then(response => {
-            console.log(response.data)
             setStores(response.data)
             // do something with the data returned
         })
         .catch(error => {
-            console.error(error.response.data.message)
             setLocError(error.response.data.message)
             setStores([])
             // do something to deal with or show the error
         })
     },[loc])
-
-    console.log(stores)
-    console.log(locError)
 
 
     return (

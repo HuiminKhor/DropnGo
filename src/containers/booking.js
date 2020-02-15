@@ -110,7 +110,6 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     // amount: price, start, end, luggage num
     // for DB: store_id, start, end, luggage_um
     const finalCost = getCost()
-    alert(finalCost)
     setMessage("Booking Confirmed")
     setOpenAlert(true)
     setColor("success")
