@@ -11,7 +11,7 @@ const btnStyle2 = {
     marginLeft:"20px"
 }
 
-const VendorCheck = () => {
+const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
     // const { currentUser } = React.useContext(User)
 
     let { id } = useParams()
@@ -28,7 +28,9 @@ const VendorCheck = () => {
             method: 'get',
         })
         .then(result =>{
-            console.log("Luggage has been checked in!")
+            setMessage("Luggage has been checked in!")
+            setOpenAlert(true)
+            setColor("success")
             setCheck(!check)
         })
     }
@@ -39,7 +41,9 @@ const VendorCheck = () => {
             method: 'get',
         })
         .then(result =>{
-            console.log("This job is complete!")
+            setMessage("This job is complete!")
+            setOpenAlert(true)
+            setColor("info")
         })
     }
     

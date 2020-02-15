@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom'
-import mapimg2 from './image/mapimg2.jpg'
+import mapimg4 from './image/mapimg4.jpg'
 import { Jumbotron } from 'reactstrap'
 
 import '../App.css';
@@ -127,7 +127,7 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
         <DialogTitle id="customized-dialog-title" onClose={handleClose} className='dialogTitle'>
           Booking To {area} 
         </DialogTitle>
-        <Jumbotron  style={{ backgroundImage: `url(${mapimg2})`, backgroundSize: 'cover',padding:0 ,fontWeight:500 }}>
+        <Jumbotron  style={{ backgroundImage: `url(${mapimg4})`, backgroundSize: 'cover',padding:0 ,fontWeight:500 }}>
         <DialogContent dividers>
         <BasicDateTimePicker 
           setDropOffDate={setDropOffDate}
