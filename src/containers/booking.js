@@ -92,7 +92,6 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
     else {
       return null
     }
-    console.log(cost)
     return cost
 }
 
