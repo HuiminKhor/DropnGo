@@ -5,16 +5,43 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../App.css'
 import moment from "moment";
+import LoadingIndicator from '../components/LoadingIndicator';
 
 const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
     // const { currentUser } = React.useContext(User)
 
     let { id } = useParams()
 
-    const [check, setCheck] = useState(false);
-    const [booking, setBooking] = useState([])
+    const [status, setStatus] = useState(3)
+    const [isLoading, setIsLoading] = useState(true)
+    const [booking, setBooking] = useState({
+            id: "", 
+            store: {
+                area: "",
+                opening_hours: ""
+                },
+            user: {
+                name: ""
+            },
+            check_in_date_time: "",
+            check_out_date_time: "",
+            number_of_bag: "",
+            price: ""
+    })
 
-    // const toggle = () =>{setcheck(!check)}
+    const { store: {
+                area,
+                opening_hours
+                },
+            user: {
+                name
+            },
+            check_in_date_time,
+            check_out_date_time,
+            number_of_bag,
+            price 
+            } = booking
+
 
     const checkIn = () => {
         // to handle check in
@@ -26,7 +53,11 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
             setMessage("Luggage has been checked in!")
             setOpenAlert(true)
             setColor("success")
-            setCheck(!check)
+            setStatus(2)
+        })
+        .catch(error => {
+            console.log(error.response.data)
+            setIsLoading(false)
         })
     }
 
@@ -39,6 +70,10 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
             setMessage("This job is complete!")
             setOpenAlert(true)
             setColor("info")
+            setStatus(3)
+        })
+        .catch(error => {
+            console.log(error.response.data)
         })
     }
     
@@ -48,61 +83,68 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
         axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?book_id=${id}`)
 
             .then(result => {
-                console.log(result)
-                setBooking(result.data)
-                // setStore(result.data.store)
+                console.log(result.data[0])
+                setBooking(result.data[0])
+                setStatus(result.data[0].status)
+                setIsLoading(false)
             })
-    
+            .catch(error => {
+                console.log(error.response.data)
+            })
     }, [id])
 
-    // console.log(booking[0])
+    let button;
+
+    if (status === 2) {
+        button = <Button style={{cursor: "pointer", textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkOut}>Check Out</Button>
+    } else if (status === 1) {
+        button = <Button style={{cursor: "pointer", textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkIn} >Check In</Button>
+    }
 
     return (
         <div>
+            { isLoading ? 
+              <LoadingIndicator  /> :
+            <>
             <div style={{textAlign:"center"}}>
                 <h2 className="profileBookingTitle">Booking Request</h2>
             </div>
             <div>
+            { booking.id !== "" ?
                 <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
-                    <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage at KL Sentral</CardHeader>
+                
+                 
+                    <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage at {area}</CardHeader>
 
                     <CardBody>
-                        {
-                            booking[0] ?
+                        
                             <div className="product">
-                                <p><strong>Name:</strong> {booking[0].user.name}</p>
-                                <p><strong>Booking id:</strong> {booking[0].id}</p>
-                                <p><strong>Drop Off:</strong> {moment(booking[0].check_in_date_time).format('llll')}</p>
-                                <p><strong>Pick Up:</strong> {moment(booking[0].check_out_date_time).format('llll')}</p>
-                                <p><strong>Luggage:</strong> {booking[0].number_of_bag}</p>
-                                <p><strong>Status:</strong> {booking[0].status}</p>
-                                <p><strong>Price:</strong> RM{booking[0].price}</p>
-                                <p><strong>Address:</strong> {booking[0].store.area}</p>
-                                <p><strong>Operating Hours:</strong> {booking[0].store.opening_hours}</p>
+                                <p><strong>Name:</strong> {name}</p>
+                                <p><strong>Booking id:</strong> {booking.id}</p>
+                                <p><strong>Drop Off:</strong> {moment(check_in_date_time).format('llll')}</p>
+                                <p><strong>Pick Up:</strong> {moment(check_out_date_time).format('llll')}</p>
+                                <p><strong>Luggage:</strong> {number_of_bag}</p>
+                                <p><strong>Status:</strong> {status}</p>
+                                <p><strong>Price:</strong> RM{price}</p>
+                                <p><strong>Address:</strong> {area}</p>
+                                <p><strong>Operating Hours:</strong> {opening_hours}</p>
                             
-                            </div>:
-                            null
-
-                        }
-
+                            </div>
+             
                     </CardBody>
-
-
-
-
+  
                     <div style={{textAlign:"center", marginTop:"20px"}}>
                         
-                            {
-                                check ? 
-                                <Button style={{cursor: "pointer", textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkOut} >Check Out</Button> :
-                                <Button style={{cursor: "pointer", textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkIn} >Check In</Button>
-                            }
+                    {button}
                         
                     </div>
                     {/* <CardFooter style={{textAlign:"center"}}>Footer</CardFooter> */}
                 </Card>
-        </div>
-        </div>
+                :
+                null }
+            </div>
+            </>
+    }</div>
     )
 }
 
