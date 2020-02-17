@@ -83,13 +83,8 @@ function SideNav() {
           <Link to="/">
           <Button className="sideBarRedesign" >Home</Button>
           </Link>
-            <br/>
-            <Button className="sideBarRedesign">Accounts</Button>
-            <br/>
-            <Button  disabled className="sideBarSmaller">My Account</Button>
-            <br/>
-            <Link to="/profile">
-            <Button disabled className="sideBarSmaller">My Luggage Storage</Button>
+            <Link to="/MyBookings">
+            <Button disabled className="sideBarRedesign">My Luggage Storage</Button>
             </Link>
           </div>
           <Divider/>

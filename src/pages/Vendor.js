@@ -56,7 +56,7 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
         axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?book_id=${id}`)
 
             .then(result => {
-                // console.log(result)
+                console.log(result)
                 setBooking(result.data)
                 // setStore(result.data.store)
             })
@@ -73,50 +73,37 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
             <div>
                 <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
                     <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage at KL Sentral</CardHeader>
-                    <CardBody style={{display: "flex", justifyContent: "center"}}>
-                        <div  style={btnStyle}>
-                        <div scope="row">
-                                    <div className="leftVariable">Drop off</div>
-                                    <div className="leftVariable">Pick up</div>
-                                    <div className="leftVariable">Luggage</div>
-                                    <div className="leftVariable">Status</div>
-                                    <div className="leftVariable">Price</div>
-                                    <div className="leftVariable">Address</div>
-                                    <div className="leftVariable">Operating hours</div>
-                                </div>
 
-                                {
-                                    booking[0] ?
-                                    <div scope="row" style={btnStyle2}>
-                                    <div className="rightVariable">{moment(booking[0].check_in_date_time).format('llll')}</div>
-                                    <div className="rightVariable">{moment(booking[0].check_out_date_time).format('llll')}</div>
-                                    <div className="rightVariable">{booking[0].number_of_bag}</div>
-                                    <div className="rightVariable">{booking[0].status}</div>
-                                    <div className="rightVariable">{booking[0].price}</div>
-                                    <div className="rightVariable">{booking[0].store.area}</div>
-                                    <div className="rightVariable">{booking[0].store.opening_hours}</div>
-                                    </div> :
-                                    null
-                                }
-                                {/*<div scope="row" style={btnStyle2}>
-                                    <div>{booking[0].check_in_date_time}</div>
-                                    <div>{booking[0].check_out_date_time}</div>
-                                    <div>{booking[0].number_of_bag}</div>
-                                    <div>{booking[0].status}</div>
-                                    <div>{booking[0].price}</div>
-                                    <div>{booking[0].store.area}</div>
-                                    <div>{booking[0].store.opening_hours}</div>
-                                </div>*/}
-                                
-                            </div>
+                    <CardBody>
+                        {
+                            booking[0] ?
+                            <div className="product">
+                                <p><strong>Name:</strong> {booking[0].user.name}</p>
+                                <p><strong>Booking id:</strong> {booking[0].id}</p>
+                                <p><strong>Drop Off:</strong> {moment(booking[0].check_in_date_time).format('llll')}</p>
+                                <p><strong>Pick Up:</strong> {moment(booking[0].check_out_date_time).format('llll')}</p>
+                                <p><strong>Luggage:</strong> {booking[0].number_of_bag}</p>
+                                <p><strong>Status:</strong> {booking[0].status}</p>
+                                <p><strong>Price:</strong> RM{booking[0].price}</p>
+                                <p><strong>Address:</strong> {booking[0].store.area}</p>
+                                <p><strong>Operating Hours:</strong> {booking[0].store.opening_hours}</p>
                             
+                            </div>:
+                            null
+
+                        }
+
                     </CardBody>
+
+
+
+
                     <div style={{textAlign:"center", marginTop:"20px"}}>
                         
                             {
                                 check ? 
-                                <Button onClick={checkOut} >Check Out</Button> :
-                                <Button onClick={checkIn} >Check In</Button>
+                                <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkOut} >Check Out</Button> :
+                                <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkIn} >Check In</Button>
                             }
                         
                     </div>

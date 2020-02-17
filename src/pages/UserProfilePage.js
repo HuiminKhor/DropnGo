@@ -19,13 +19,6 @@ import moment from 'moment'
 
 // }
 
-const btnStyle = {
-    display:"flex"
-}
-
-const btnStyle2 = {
-    marginLeft:"20px"
-}
 
 // state = {
 //     booking: null
@@ -115,12 +108,12 @@ const UserProfile = () => {
             </div>
             <div className="BookedButtonList">
                 <div>
-                    <button className="BookingListButton" onClick={toggleMode}>
+                    <button className="BookingListButton" style={mode?{background:"#40739E",color: "white"}:null}  onClick={toggleMode}>
                         CURRENT
                     </button>
                 </div>
                 <div>
-                    <button className="CompletedListButton" onClick={toggleMode2}>
+                    <button className="CompletedListButton" style={mode?null:{background:"#40739E",color: "white"}} onClick={toggleMode2}>
                         COMPLETED
                     </button>
                 </div>
@@ -136,7 +129,7 @@ const UserProfile = () => {
                         id ? <Qrgen modal={modal} toggle={closeModal} booking_id={id}/> :
                         <>
                     { booking.map((book=>(
-                        <div>
+                        <div key={book.id}>
                         <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
                     <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
                             {/* <CardBody style={{display: "flex", justifyContent: "center"}}>
@@ -170,7 +163,7 @@ const UserProfile = () => {
                                             <p><strong>Drop Off:</strong> {moment(book.check_in_date_time).format('llll')}</p>
                                             <p><strong>Pick Up:</strong> {moment(book.check_out_date_time).format('llll')}</p>
                                             <p><strong>Luggage:</strong> {book.number_of_bag}</p>
-                                            <p><strong>Price:</strong> {book.price}</p>
+                                            <p><strong>Price:</strong> RM{book.price}</p>
                                             <p><strong>Address:</strong> {book.store.area}</p>
                                             <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
                                             <p><strong>Status:</strong> {book.status===1 ? "Not Check in" : "Checked in "}</p>
@@ -193,7 +186,7 @@ const UserProfile = () => {
                     id ? <Qrgen modal={modal} toggle={closeModal} booking_id={id}/> :
                     <>
                 { booking2.map((book=>(
-                    <div>
+                    <div key={book.id}>
                     <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
                         <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
                         <CardBody>

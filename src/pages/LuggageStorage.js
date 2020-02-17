@@ -5,6 +5,8 @@ import BookingModal from '../containers/booking';
 import axios from "axios"
 import { useLocation } from 'react-router-dom';
 import SearchBar from '../components/Search'
+import heavy from './heavy.png'
+
 
 
 
@@ -28,7 +30,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
             // do something with the data returned
         })
         .catch(error => {
-            setLocError(error.response.data.message)
+            setLocError(error.response.data)
             setStores([])
             // do something to deal with or show the error
         })
@@ -121,8 +123,11 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                 
               ))
               : 
-              <div className="ErrorNoStore">{locError === "Store doesn't exist" ? "Sorry, there are no stores for that location" : null }</div>
-            }
+              <div className="ErrorNoStore">
+              <img src={heavy} width="150" height="150"></img>
+              <div>{!locError.is_success ? "Sorry, there are no stores for that location" : null }</div>
+              </div>
+            } 
 
         </div>
 

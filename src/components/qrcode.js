@@ -10,7 +10,7 @@ const MyQr = (props) => {
     // return <QRCode value="http://localhost:3000/vendor" />?
     console.log(props.id)
     // return <QRCode value="http://localhost:3000/vendor/"/>
-    return <QRCode value={`http://localhost:3000/vendor/${props.id}`} size="80"/>
+    return <QRCode value={`/vendor/${props.id}`} size="80"/>
 }
 
 export default MyQr
