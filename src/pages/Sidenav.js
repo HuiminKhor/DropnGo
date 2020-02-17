@@ -84,7 +84,7 @@ function SideNav() {
           <Button className="sideBarRedesign" >Home</Button>
           </Link>
             <Link to="/MyBookings">
-            <Button disabled className="sideBarRedesign">My Luggage Storage</Button>
+            <Button className="sideBarRedesign">My Luggage Storage</Button>
             </Link>
           </div>
           <Divider/>
