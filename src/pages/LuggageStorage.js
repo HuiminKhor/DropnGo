@@ -8,6 +8,7 @@ import SearchBar from '../components/Search'
 import heavy from './heavy.png'
 
 
+import LoadingIndicator from '../components/LoadingIndicator'
 
 
 const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
@@ -16,22 +17,26 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
     let loc = params.get('index')
 
     const [stores, setStores] = useState([])
+    const [ isLoading, setIsLoading ] = useState(true)
 
     const [locError, setLocError] = useState("")
 
- 
+    
     useEffect(()=>{
+      setIsLoading(true)
         axios({
             method: 'GET',
             url: `https://dropandgo.herokuapp.com/api/v1/stores/?loc=${loc}`
         })
         .then(response => {
             setStores(response.data)
+            setIsLoading(false)
             // do something with the data returned
         })
         .catch(error => {
-            setLocError(error.response.data)
-            setStores([])
+          setLocError(error.response.data.message)
+          setStores([])
+          setIsLoading(false)
             // do something to deal with or show the error
         })
     },[loc])
@@ -41,15 +46,17 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
             <div>
-            <SearchBar searchClass="searchbarTwo" loc={loc}/>
-
-              {/* <div className="search">
-                <input type="text" className="searchTerm" placeholder="City, Address or Location"/>
-                <button type="submit" className="searchButton">
-                  <i className="fa fa-search"></i>
-                </button>
-              </div> */}
+              <SearchBar searchClass="searchbarTwo" loc={loc}/>
             </div>
+            {/* <div className="search">
+              <input type="text" className="searchTerm" placeholder="City, Address or Location"/>
+              <button type="submit" className="searchButton">
+                <i className="fa fa-search"></i>
+              </button>
+            </div> */}
+            { isLoading ? 
+              <LoadingIndicator  /> :
+              <>
             { stores.length !== 0 ?
               stores.map(({ price, operating_day, opening_hours, star_rating, city, id, nearby, nearby2, area, store_image})=>(
                 <div key={id}>
@@ -128,6 +135,10 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               <div>{!locError.is_success ? "Sorry, there are no stores for that location" : null }</div>
               </div>
             } 
+              <div className="ErrorNoStore">{locError === "Store doesn't exist" ? "Sorry, there are no stores for that location" : null }</div>
+            }
+            </>
+            }
 
         </div>
 

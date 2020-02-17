@@ -148,7 +148,7 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
           </Grid>
           <Grid item>
             <Typography gutterBottom variant="h4">
-              {  getCost() }
+              RM {  getCost() }
             </Typography>
           </Grid>
         </Grid>

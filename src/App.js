@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css'
 import HomePage from './pages/HomePage'
 import { Route, Switch } from 'react-router-dom'
@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import LuggageStorage from './pages/LuggageStorage'
 import PaymentPage from './pages/PaymentPage'
 import PaymentComplete from './pages/PaymentComplete'
+import LoadingIndicator from './components/LoadingIndicator'
 import Alertbar from './components/Alertbar'
 import axios from 'axios'
 
@@ -32,11 +33,16 @@ function App() {
     color:""
     });
 
-
+  const [ isLoading, setIsLoading ] = useState(true)
   const [openAlert, setOpenAlert] = React.useState(false);
   const [color, setColor] = React.useState("");  
-  
+
+  useEffect(()=>{
+    setIsLoading(false)
+  },[])
+
   function handleLogin (e) {
+    setIsLoading(true)
     e.preventDefault()
     axios({
       method: 'GET',
@@ -50,6 +56,7 @@ function App() {
         setMessage("Login Successful")
         setOpenAlert(true)
         setColor("success")
+        setIsLoading(false)
     })
     .catch(error => {
         console.error(error.response.data.message)
@@ -75,6 +82,7 @@ function App() {
     setOpenFsd(false);
   };
 
+  
   return (
     <User.Provider value={{ 
       currentUser, 
@@ -83,7 +91,9 @@ function App() {
       handleLogout, 
       handleFsdOpen, 
       handleFsdClose,
-      openFsd }}>
+      openFsd,
+      isLoading,
+      setIsLoading }}>
       {
         message!==""?
         <Alertbar message={message} open={openAlert} color={color} setOpen={setOpenAlert}/>
@@ -95,27 +105,30 @@ function App() {
         <div className='myNavbar'>
           <Navbar/>
         </div>
-    
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/MyBookings">
-            <UserProfile />
-          </Route>
-          <Route path="/vendor/:id">
-            <VendorCheck setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
-          </Route>
-          <Route path="/luggage-storage/:city">
-            <LuggageStorage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
-          </Route>
-          <Route path="/payment">
-            <PaymentPage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
-          </Route>
-          <Route path="/booking/:id">
-            <PaymentComplete />
-          </Route>
-        </Switch>
+        { isLoading ? 
+          <LoadingIndicator  /> : 
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/MyBookings">
+              <UserProfile />
+            </Route>
+            <Route path="/vendor/:id">
+              <VendorCheck setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
+            </Route>
+            <Route path="/luggage-storage/:city">
+              <LuggageStorage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
+            </Route>
+            <Route path="/payment">
+              <PaymentPage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
+            </Route>
+            <Route path="/booking/:id">
+              <PaymentComplete />
+            </Route>
+          </Switch>
+        }
+
        
         <div>
         <FooterColour>BY TEAM GO ALL RIGHT RESERVED 2020</FooterColour>

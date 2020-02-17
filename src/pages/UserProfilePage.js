@@ -5,6 +5,7 @@ import axios from 'axios'
 import '../App.css'
 import { User } from '../App'
 import moment from 'moment'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 
 
@@ -45,7 +46,7 @@ import moment from 'moment'
 
 
 const UserProfile = () => {
-    const { currentUser } = React.useContext(User)
+    const { currentUser} = React.useContext(User)
     // console.log(currentUser)
     const [modal, setModal] = useState(false);
     const [id, setId] = useState(null);
@@ -66,7 +67,7 @@ const UserProfile = () => {
     const [booking, setBooking] = useState([])
     const [booking2, setBooking2] = useState([])
     // const [store, setStore] = useState({})
-    const [isLoading, setIsLoading] = useState(true)
+    const [Loading, setLoading] = useState(true)
 
     const [bookError, setBookError] = useState("")
 
@@ -76,18 +77,18 @@ const UserProfile = () => {
         axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?user_id=${currentUser.id}`)
 
             .then(result => {
-                console.log(result)
-                let booking = result.data.filter( (book=> (book.status!==3) ) )
+                // console.log(result)
+                let booking = result.data.filter( (book=> (book.status!==3) ) )  
                 setBooking(booking)
                 let booking2 = result.data.filter( (book=> (book.status===3)))
                 setBooking2(booking2)
-                setIsLoading(false)
+                setLoading(false)
             })
             .catch(error => {
                 setBookError(error.response.data.is_success)
                 setBooking([])
                 setBooking2([])
-                setIsLoading(false)
+                setLoading(false)
                 // do something to deal with or show the error
             })
     
@@ -97,9 +98,6 @@ const UserProfile = () => {
 
     // let { id } = useParams()
 
-    if (isLoading === true) {
-        return <h1>Loading...</h1>
-       }
 
     return(
         <div>
@@ -119,12 +117,16 @@ const UserProfile = () => {
                 </div>
             </div>
             
+            { Loading ? 
+              <LoadingIndicator  /> :  
+            <>
             { booking.length !== 0 ?
             <>
                 
             {
                 mode ?
                 <>
+                
                     {
                         id ? <Qrgen modal={modal} toggle={closeModal} booking_id={id}/> :
                         <>
@@ -219,6 +221,8 @@ const UserProfile = () => {
             <div className="ErrorNoBooking">{!bookError ? "Sorry, there are no bookings yet." : null }</div>
             
         }
+        </>
+    }
 
         </div>
         
