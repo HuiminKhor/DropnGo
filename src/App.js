@@ -61,12 +61,12 @@ function App() {
         setOpenAlert(true)
         setColor("success")
         setIsLoading(false)
+        handleFsdClose()
     })
     .catch(error => {
         console.error(error.response.data.message)
         // do something to deal with or show the error
     })
-    handleFsdClose()
   }
 
   function handleLogout() {
