@@ -93,8 +93,8 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
                         
                             {
                                 check ? 
-                                <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkOut} >Check Out</Button> :
-                                <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkIn} >Check In</Button>
+                                <Button style={{cursor: "pointer", textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkOut} >Check Out</Button> :
+                                <Button style={{cursor: "pointer", textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkIn} >Check In</Button>
                             }
                         
                     </div>
