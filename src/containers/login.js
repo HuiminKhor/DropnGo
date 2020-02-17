@@ -78,17 +78,16 @@ function FullScreenDialog(setMessage, setOpenAlert, setColor) {
               id="email"
               label="Email Address"
               placeholder="Example@email.com"
-              multiline
               variant="outlined"
               value={email}
               onChange={handleInput}
             />
             <TextField
               name="password"
-              id="password"
+              type="password"
+              id="standard-password-input"
               label="Password"
               placeholder="Password required"
-              multiline
               variant="outlined"
               value={password}
               onChange={handleInput}
