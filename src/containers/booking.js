@@ -111,7 +111,8 @@ export default function BookingModal({ setMessage, setOpenAlert, setColor, price
       dropOffDate,
       cost: finalCost,
       luggageNum,
-      store_id
+      store_id,
+      area
     })
   };
   

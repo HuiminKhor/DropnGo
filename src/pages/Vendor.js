@@ -2,6 +2,9 @@ import React,{useState, useEffect} from 'react'
 import { Card, Button, CardHeader, CardBody } from 'reactstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import '../App.css'
+import moment from "moment";
+
 
 const btnStyle = {
     display:"flex"
@@ -65,33 +68,33 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
     return (
         <div>
             <div style={{textAlign:"center"}}>
-                <p>Booking Request</p>
+                <h2 className="profileBookingTitle">Booking Request</h2>
             </div>
             <div>
-                <Card style={{border:"5px solid black", marginRight:"10vw", marginLeft:"10vw", paddingTop:"20px", paddingBottom:"20px", borderRadius:"25px"}}>
-                    <CardHeader style={{textAlign:"center", marginBottom: "20px"}}>Luggage at KL Sentral</CardHeader>
+                <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
+                    <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage at KL Sentral</CardHeader>
                     <CardBody style={{display: "flex", justifyContent: "center"}}>
                         <div  style={btnStyle}>
                         <div scope="row">
-                                    <div>Drop off</div>
-                                    <div>Pick up</div>
-                                    <div>Luggage</div>
-                                    <div>Status</div>
-                                    <div>Price</div>
-                                    <div>Address</div>
-                                    <div>Operating hours</div>
+                                    <div className="leftVariable">Drop off</div>
+                                    <div className="leftVariable">Pick up</div>
+                                    <div className="leftVariable">Luggage</div>
+                                    <div className="leftVariable">Status</div>
+                                    <div className="leftVariable">Price</div>
+                                    <div className="leftVariable">Address</div>
+                                    <div className="leftVariable">Operating hours</div>
                                 </div>
 
                                 {
                                     booking[0] ?
                                     <div scope="row" style={btnStyle2}>
-                                    <div>{booking[0].check_in_date_time}</div>
-                                    <div>{booking[0].check_out_date_time}</div>
-                                    <div>{booking[0].number_of_bag}</div>
-                                    <div>{booking[0].status}</div>
-                                    <div>{booking[0].price}</div>
-                                    <div>{booking[0].store.area}</div>
-                                    <div>{booking[0].store.opening_hours}</div>
+                                    <div className="rightVariable">{moment(booking[0].check_in_date_time).format('llll')}</div>
+                                    <div className="rightVariable">{moment(booking[0].check_out_date_time).format('llll')}</div>
+                                    <div className="rightVariable">{booking[0].number_of_bag}</div>
+                                    <div className="rightVariable">{booking[0].status}</div>
+                                    <div className="rightVariable">{booking[0].price}</div>
+                                    <div className="rightVariable">{booking[0].store.area}</div>
+                                    <div className="rightVariable">{booking[0].store.opening_hours}</div>
                                     </div> :
                                     null
                                 }
