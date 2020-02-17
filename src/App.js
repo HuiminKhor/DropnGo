@@ -20,6 +20,10 @@ const FooterColour = styled.footer`
   position: absolute;
   bottom: 0;
   width: 100%;
+  text-align: center;
+  background-color: #ecf0f1;
+  font-weight: bold;
+  padding-top: 10px;
     `;
 
 function App() {

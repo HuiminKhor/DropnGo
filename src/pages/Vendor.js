@@ -5,15 +5,6 @@ import { useParams } from 'react-router-dom';
 import '../App.css'
 import moment from "moment";
 
-
-const btnStyle = {
-    display:"flex"
-}
-
-const btnStyle2 = {
-    marginLeft:"20px"
-}
-
 const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
     // const { currentUser } = React.useContext(User)
 

@@ -6,8 +6,6 @@ import axios from "axios"
 import { useLocation } from 'react-router-dom';
 import SearchBar from '../components/Search'
 import heavy from './heavy.png'
-
-
 import LoadingIndicator from '../components/LoadingIndicator'
 
 
@@ -17,9 +15,9 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
     let loc = params.get('index')
 
     const [stores, setStores] = useState([])
-    const [ isLoading, setIsLoading ] = useState(true)
-
     const [locError, setLocError] = useState("")
+    const [isLoading, setIsLoading] = useState(true)
+
 
     
     useEffect(()=>{
@@ -34,13 +32,14 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
             // do something with the data returned
         })
         .catch(error => {
-          setLocError(error.response.data.message)
-          setStores([])
-          setIsLoading(false)
+            setLocError(error.response.data)
+            setStores([])
+            setIsLoading(false)
             // do something to deal with or show the error
         })
     },[loc])
 
+  
 
     return (
         <div>
@@ -64,22 +63,16 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               <div className="container">
                 <div className="row">
                   <div className="col-md-7">
-                    <div className="fast-check-in d-flex">
-                  
-                      <div className="angels-info d-none d-lg-flex">
-                        <div className="angels-info-price"></div>
-                        <div className="angels-info-time"></div>
-                      </div>
-                    </div>
+                   
                     <div className="product-list">
                       <div id="product-item" className="product-item popular">
                         <h4 className="product-title">
-              <a href="/">Luggage Storage {area}</a>
+                        Luggage Storage {area}
                         </h4>
                         <div className="product-content">
                           <div className="product-img">
                             <picture>
-                              <img src= {store_image} alt="Kuala Lumpur" height="250" width="150"></img>
+                              <img src= {store_image} alt="store-image" height="200" width="120"></img>
                             </picture>
                           </div>
                           <div className="product-descr-wrap">
@@ -118,7 +111,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                                 <span className="neighborhood-name">Brickfields</span> */}
                               </div>
                             </div>      
-                          </div>x
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -131,7 +124,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               ))
               : 
               <div className="ErrorNoStore">
-              <img src={heavy} width="150" height="150"></img>
+              <img src={heavy} width="150" height="150" alt="noStoreErrorImage"></img>
               <div>{!locError.is_success ? "Sorry, there are no stores for that location" : null }</div>
               </div>
             } 
