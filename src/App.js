@@ -100,7 +100,7 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/profile">
+          <Route path="/MyBookings">
             <UserProfile />
           </Route>
           <Route path="/vendor/:id">
