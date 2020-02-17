@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { Card, Button, CardHeader, CardBody } from 'reactstrap';
+import { Card, Button, CardHeader, CardBody } from 'reactstrap'
 import Qrgen from '../components/qrModal'
 import axios from 'axios'
 import '../App.css'
 import { User } from '../App'
 import moment from 'moment'
 import LoadingIndicator from '../components/LoadingIndicator'
+import BOOKINGSTATUSES from '../constants/BookingStatuses'
 
 
 
@@ -98,6 +99,10 @@ const UserProfile = () => {
 
     // let { id } = useParams()
 
+    const getStatus = (booking) => {
+        return BOOKINGSTATUSES.find (s => s.value === booking)
+    }
+
 
     return(
         <div>
@@ -162,14 +167,13 @@ const UserProfile = () => {
 
                             <CardBody>
                                     <div className="product">
-                                            <p><strong>Drop Off:</strong> {moment(book.check_in_date_time).format('llll')}</p>
-                                            <p><strong>Pick Up:</strong> {moment(book.check_out_date_time).format('llll')}</p>
-                                            <p><strong>Luggage:</strong> {book.number_of_bag}</p>
-                                            <p><strong>Price:</strong> RM{book.price}</p>
-                                            <p><strong>Address:</strong> {book.store.area}</p>
-                                            <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
-                                            <p><strong>Status:</strong> {book.status===1 ? "Not Check in" : "Checked in "}</p>
-
+                                        <p style={{backgroundColor: getStatus(book.status).colour, borderRadius: "10%", fontSize: "3.0em"}}><strong>{getStatus(book.status).status}</strong></p>
+                                        <p><strong>Drop Off:</strong> {moment(book.check_in_date_time).format('llll')}</p>
+                                        <p><strong>Pick Up:</strong> {moment(book.check_out_date_time).format('llll')}</p>
+                                        <p><strong>Luggage:</strong> {book.number_of_bag}</p>
+                                        <p><strong>Price:</strong> RM{book.price}</p>
+                                        <p><strong>Address:</strong> {book.store.area}</p>
+                                        <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
                                     </div>
                             </CardBody>
 
@@ -193,14 +197,13 @@ const UserProfile = () => {
                         <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
                         <CardBody>
                                     <div className="product">
-                                            <p><strong>Drop Off:</strong> {moment(book.check_in_date_time).format('llll')}</p>
-                                            <p><strong>Pick Up:</strong> {moment(book.check_out_date_time).format('llll')}</p>
-                                            <p><strong>Luggage:</strong> {book.number_of_bag}</p>
-                                            <p><strong>Price:</strong> {book.price}</p>
-                                            <p><strong>Address:</strong> {book.store.area}</p>
-                                            <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
-                                            <p><strong>Status:</strong> {book.status===3 ? "Check out complete":null}</p>
-
+                                        <p style={{backgroundColor: getStatus(book.status).colour, borderRadius: "10%", fontSize: "3.0em"}}><strong>{getStatus(book.status).status}</strong></p>
+                                        <p><strong>Drop Off:</strong> {moment(book.check_in_date_time).format('llll')}</p>
+                                        <p><strong>Pick Up:</strong> {moment(book.check_out_date_time).format('llll')}</p>
+                                        <p><strong>Luggage:</strong> {book.number_of_bag}</p>
+                                        <p><strong>Price:</strong> {book.price}</p>
+                                        <p><strong>Address:</strong> {book.store.area}</p>
+                                        <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
                                     </div>
                             </CardBody>
 
