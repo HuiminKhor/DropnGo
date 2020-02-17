@@ -1,11 +1,13 @@
 import React,{useState, useEffect} from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap';
-import Button from '@material-ui/core/Button';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Card, CardHeader, CardBody } from 'reactstrap'
+import Button from '@material-ui/core/Button'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 import '../App.css'
-import moment from "moment";
-import LoadingIndicator from '../components/LoadingIndicator';
+import moment from "moment"
+import LoadingIndicator from '../components/LoadingIndicator'
+import BOOKINGSTATUSES from '../constants/BookingStatuses'
+
 
 const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
     // const { currentUser } = React.useContext(User)
@@ -101,6 +103,10 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
         button = <Button style={{cursor: "pointer", textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={checkIn} >Check In</Button>
     }
 
+    const getStatus = (booking) => {
+        return BOOKINGSTATUSES.find (s => s.value === booking)
+    }
+
     return (
         <div>
             { isLoading ? 
@@ -119,12 +125,13 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
                     <CardBody>
                         
                             <div className="product">
+                                <p style={{backgroundColor: getStatus(status).colour, borderRadius: "10%", fontSize: "3.0em", marginLeft: "auto", marginRight: "auto"}}><strong>{getStatus(status).status}</strong></p>
                                 <p><strong>Name:</strong> {name}</p>
                                 <p><strong>Booking id:</strong> {booking.id}</p>
                                 <p><strong>Drop Off:</strong> {moment(check_in_date_time).format('llll')}</p>
                                 <p><strong>Pick Up:</strong> {moment(check_out_date_time).format('llll')}</p>
                                 <p><strong>Luggage:</strong> {number_of_bag}</p>
-                                <p><strong>Status:</strong> {status}</p>
+                                {/* <p style={{backgroundColor: getStatus(status).colour}}><strong>Status:</strong> {getStatus(status).status}</p> */}
                                 <p><strong>Price:</strong> RM{price}</p>
                                 <p><strong>Address:</strong> {area}</p>
                                 <p><strong>Operating Hours:</strong> {opening_hours}</p>
