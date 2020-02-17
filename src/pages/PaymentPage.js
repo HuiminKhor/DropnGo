@@ -28,10 +28,10 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
         axios.get('https://dropandgo.herokuapp.com/api/v1/payments/new')
             .then(result => {
                 setClientToken(result.data.client_token)
+                // setPayButton(false)
             })
     }, [])
 
-    
     const buy = () => {
         setIsLoading(true)
         console.log(instance)
@@ -84,7 +84,7 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
                 <div className="template-content">
                     <div>
                     
-                    <h2>Luggage Storage {state.area}</h2>
+                    <h1>Luggage Storage {state.area}</h1>
                     
                         <p><strong>Drop off:</strong> {moment(state.dropOffDate).format('llll')}</p>
                         <p><strong>Pick-up:</strong> {moment(state.pickUpDate).format('llll')}</p>
@@ -95,17 +95,23 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
                              <p className="total"><strong>Total:</strong>  RM{state.cost}</p>
                         </div>
                 </div>
-            </div>
             {/* <h2>Price: RM{state.cost}</h2>
             <h4>Start Date: {moment(state.dropOffDate).format('llll')}</h4>
             <h4>Start Date: {moment(state.pickUpDate).format('llll')}</h4>
             <h4>Number of luggage: {state.luggageNum}</h4> */}
-
+            <br></br>
             <DropIn
                 options={{ authorization: clientToken }}
                 onInstance={i => {setInstance(i)}}
+                // if (instance) {setPayButton(false)}
+
             />
-            <button className="PayButton" onClick={buy}>PAY RM{state.cost}</button>
+         </div>
+            { instance ?
+            <button disabled="false" className="PayButton" onClick={buy}>PAY RM{state.cost}</button>
+            :
+            <button disabled="false" className="PayButton" style={{visibility:"hidden"}} onClick={buy}>PAY RM{state.cost}</button>
+            }
         </div>
 
     )

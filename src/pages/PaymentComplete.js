@@ -13,14 +13,15 @@ function PaymentComplete() {
    return  <div>
 
 
-        <div className="BookingCompletedT">       
+        <div className="BookingCompletedT">   
         <h1>Booking completed</h1>
+        <div className="BookingComNoTitle">   
         <p>Your payment of RM{state.cost} is completed</p>
         <p>Your Booking ID is: {state.booking_id}</p>
         <p>Click the button to be redirected to your booking page</p>
-        <Link to="/profile" className="bookingCompletedButton">GO TO BOOKING PAGE</Link>
+        <Link to="/MyBookings" className="bookingCompletedButton">GO TO BOOKING PAGE</Link>
 
-
+        </div>
         </div>
         </div>
 
