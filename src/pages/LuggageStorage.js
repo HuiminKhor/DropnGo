@@ -6,8 +6,6 @@ import axios from "axios"
 import { useLocation } from 'react-router-dom';
 import SearchBar from '../components/Search'
 import heavy from './heavy.png'
-
-
 import LoadingIndicator from '../components/LoadingIndicator'
 
 
@@ -17,8 +15,6 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
     let loc = params.get('index')
 
     const [stores, setStores] = useState([])
-    const [ isLoading, setIsLoading ] = useState(true)
-
     const [locError, setLocError] = useState("")
     const [isLoading, setIsLoading] = useState(true)
 
@@ -43,10 +39,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
         })
     },[loc])
 
-    if (isLoading == true) {
-      return <h1>Loading...</h1>
-
-    }
+  
 
     return (
         <div>
