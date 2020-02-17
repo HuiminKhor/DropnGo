@@ -72,7 +72,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                         <div className="product-content">
                           <div className="product-img">
                             <picture>
-                              <img src= {store_image} alt="store-image" height="200" width="120"></img>
+                              <img src= {store_image} alt="store" height="200" width="120"></img>
                             </picture>
                           </div>
                           <div className="product-descr-wrap">

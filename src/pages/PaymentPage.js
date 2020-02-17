@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
 
 function PaymentPage({setMessage, setOpenAlert, setColor}) {    
     const [instance, setInstance] = useState(null)
-    const { currentUser, setIsLoading } = React.useContext(User)
+    const { currentUser, isLoading, setIsLoading } = React.useContext(User)
     const [clientToken, setClientToken] = useState(null)
    
 
@@ -75,7 +75,7 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
         return 'You can only access this page from booking page'
     }
     
-    // if (clientToken === null) return isLoading
+    if (clientToken === null) return isLoading
        
 
     return (
@@ -108,9 +108,9 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
             />
          </div>
             { instance ?
-            <button disabled="false" className="PayButton" onClick={buy}>PAY RM{state.cost}</button>
+            <button className="PayButton" onClick={buy}>PAY RM{state.cost}</button>
             :
-            <button disabled="false" className="PayButton" style={{visibility:"hidden"}} onClick={buy}>PAY RM{state.cost}</button>
+            <button className="PayButton" style={{visibility:"hidden"}} onClick={buy}>PAY RM{state.cost}</button>
             }
         </div>
 
