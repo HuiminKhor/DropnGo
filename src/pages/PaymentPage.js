@@ -10,16 +10,18 @@ import { useHistory } from 'react-router-dom'
 
 function PaymentPage({setMessage, setOpenAlert, setColor}) {    
     const [instance, setInstance] = useState(null)
-    const { currentUser } = React.useContext(User)
+    const { currentUser, setIsLoading } = React.useContext(User)
     const [clientToken, setClientToken] = useState(null)
+   
+
    
     let history = useHistory();
     let { state } = useLocation()
 
     // if you do history.push('/payment', {a: 1, b: 2})
     // then state will be {a:1, b:2}
-    console.log(state)
-    console.log(instance)
+    // console.log(state)
+    // console.log(instance)
 
 
     useEffect(() => {
@@ -31,7 +33,7 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
 
     
     const buy = () => {
-        
+        setIsLoading(true)
         console.log(instance)
         instance.requestPaymentMethod()
         .then(result => {
@@ -59,6 +61,7 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
                         let path = `/booking/${booking_id}`
                         const { cost } = state
                         console.log(cost)
+                        setIsLoading(false)
                         history.push(path, {
                             cost,
                             booking_id
@@ -72,7 +75,7 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
         return 'You can only access this page from booking page'
     }
     
-    if (!clientToken) return 'Loading...'
+    // if (clientToken === null) return isLoading
        
 
     return (

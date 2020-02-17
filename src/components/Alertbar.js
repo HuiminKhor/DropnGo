@@ -33,7 +33,7 @@ export default function Alertbar(props) {
         Open success snackbar
       </Button> */}
       <Snackbar open={props.open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={props.color}>
+        <Alert onClose={handleClose} color={props.color}>
           {props.message}
         </Alert>
       </Snackbar>

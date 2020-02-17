@@ -570,6 +570,16 @@ color: black !important;
   color: black !important;
 }
 
+
+.MuiPaper-rounded {
+  border-radius: 0px !important;
+}
+
+.loader{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .wrap{
   width: 50%;
   position: relative;
