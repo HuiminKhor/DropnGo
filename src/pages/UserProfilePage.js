@@ -83,13 +83,8 @@ const UserProfile = () => {
         axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?user_id=${currentUser.id}`)
 
             .then(result => {
-<<<<<<< HEAD
                 console.log(result)
                 let booking = result.data.filter( (book=> (book.status!==3) ) )
-=======
-                // console.log(result)
-                let booking = result.data.filter( (book=> (book.status!==3) ) )  
->>>>>>> Added error catch and loading to userProfile page
                 setBooking(booking)
                 let booking2 = result.data.filter( (book=> (book.status===3)))
                 setBooking2(booking2)
