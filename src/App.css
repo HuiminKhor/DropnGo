@@ -565,6 +565,11 @@ color: black !important;
   font-size: 2rem !important;
 }
 
+/* editing the color for dropdown */
+.MuiIconButton-colorPrimary {
+  color: black !important;
+}
+
 .wrap{
   width: 50%;
   position: relative;
