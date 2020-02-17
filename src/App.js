@@ -8,6 +8,7 @@ import Navbar from './pages/Navbar.js'
 import styled from 'styled-components'
 import LuggageStorage from './pages/LuggageStorage'
 import PaymentPage from './pages/PaymentPage'
+import PaymentComplete from './pages/PaymentComplete'
 import Alertbar from './components/Alertbar'
 import axios from 'axios'
 
@@ -15,11 +16,9 @@ export const User = React.createContext(null)
 
 
 const FooterColour = styled.footer`
-    background: #ecf0f1;
-    bottom: 0;
-    position: fixed;
-    margin-bottom: 0;
-    width: 100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
     `;
 
 function App() {
@@ -96,7 +95,7 @@ function App() {
         <div className='myNavbar'>
           <Navbar/>
         </div>
-
+    
         <Switch>
           <Route exact path="/">
             <HomePage />
@@ -113,7 +112,11 @@ function App() {
           <Route path="/payment">
             <PaymentPage setMessage={setMessage} setOpenAlert={setOpenAlert} setColor={setColor}/>
           </Route>
+          <Route path="/booking/:id">
+            <PaymentComplete />
+          </Route>
         </Switch>
+       
         <div>
         <FooterColour>BY TEAM GO ALL RIGHT RESERVED 2020</FooterColour>
         </div>

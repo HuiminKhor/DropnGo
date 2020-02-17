@@ -8,9 +8,7 @@ import { useHistory } from 'react-router-dom'
 
 
 
-function PaymentPage({setMessage, setOpenAlert, setColor}) {
-    const [instance, setInstance] = useState(null)
-    
+function PaymentPage({setMessage, setOpenAlert, setColor}) {    
     const [instance, setInstance] = useState(null)
     const { currentUser } = React.useContext(User)
     const [clientToken, setClientToken] = useState(null)
@@ -56,8 +54,15 @@ function PaymentPage({setMessage, setOpenAlert, setColor}) {
                         setMessage("Booking Confirmed")
                         setOpenAlert(true)
                         setColor("success")
-                        let path = `/unknown`
-                        history.push(path)
+                        const { booking_id } = response.data
+                        console.log(booking_id)
+                        let path = `/booking/${booking_id}`
+                        const { cost } = state
+                        console.log(cost)
+                        history.push(path, {
+                            cost,
+                            booking_id
+                        })
                         console.log(response) // {success: true or false}
                     })
             })
