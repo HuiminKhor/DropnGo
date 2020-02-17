@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
-import { Card, Button, CardHeader, CardBody } from 'reactstrap';
+import { Card, CardHeader, CardBody } from 'reactstrap';
+import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../App.css'
