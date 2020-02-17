@@ -73,6 +73,9 @@ const UserProfile = () => {
     const [booking, setBooking] = useState([])
     const [booking2, setBooking2] = useState([])
     // const [store, setStore] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+
+    const [bookError, setBookError] = useState("")
 
 
     useEffect(() => {
@@ -80,12 +83,24 @@ const UserProfile = () => {
         axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?user_id=${currentUser.id}`)
 
             .then(result => {
+<<<<<<< HEAD
                 console.log(result)
                 let booking = result.data.filter( (book=> (book.status!==3) ) )
+=======
+                // console.log(result)
+                let booking = result.data.filter( (book=> (book.status!==3) ) )  
+>>>>>>> Added error catch and loading to userProfile page
                 setBooking(booking)
                 let booking2 = result.data.filter( (book=> (book.status===3)))
                 setBooking2(booking2)
-                // setStore(result.data.store)
+                setIsLoading(false)
+            })
+            .catch(error => {
+                setBookError(error.response.data.is_success)
+                setBooking([])
+                setBooking2([])
+                setIsLoading(false)
+                // do something to deal with or show the error
             })
     
     }, [currentUser])
@@ -93,6 +108,10 @@ const UserProfile = () => {
     // console.log('booking is ', booking)
 
     // let { id } = useParams()
+
+    if (isLoading === true) {
+        return <h1>Loading...</h1>
+       }
 
     return(
         <div>
@@ -111,6 +130,10 @@ const UserProfile = () => {
                     </button>
                 </div>
             </div>
+            
+            { booking.length !== 0 ?
+            <>
+                
             {
                 mode ?
                 <>
@@ -202,13 +225,13 @@ const UserProfile = () => {
             }
             </>
             }
-
-            {/* {
-                mode2 ?
-                
-                :null
-            } */}
+            </>
             
+            :
+            <div className="ErrorNoBooking">{!bookError ? "Sorry, there are no bookings yet." : null }</div>
+            
+        }
+
         </div>
         
     )

@@ -14,8 +14,10 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
     let loc = params.get('index')
 
     const [stores, setStores] = useState([])
+
     const [locError, setLocError] = useState("")
 
+ 
     useEffect(()=>{
         axios({
             method: 'GET',
@@ -107,7 +109,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
                                 <span className="neighborhood-name">Brickfields</span> */}
                               </div>
                             </div>      
-                          </div>
+                          </div>x
                         </div>
                       </div>
                     </div>
