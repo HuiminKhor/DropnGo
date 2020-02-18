@@ -50,7 +50,7 @@ function App() {
     e.preventDefault()
     axios({
       method: 'GET',
-      url: `https://dropandgo.herokuapp.com/api/v1/users/1`
+      url: `https://dropandgo.herokuapp.com/api/v1/users/6`
     })
     .then(response => {
         console.log(response.data)
