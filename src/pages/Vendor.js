@@ -125,7 +125,7 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
                     <CardBody>
                         
                             <div className="product">
-                                <p style={{backgroundColor: getStatus(status).colour, borderRadius: "10%", fontSize: "3.0em", marginLeft: "auto", marginRight: "auto"}}><strong>{getStatus(status).status}</strong></p>
+                                <p style={{backgroundColor: getStatus(status).colour, fontSize: "3.0em", color:"white", justifyContent:"center", textTransform:"uppercase"}}><strong style={{marginBottom:"10px"}}>{getStatus(status).status}</strong></p>
                                 <p><strong>Name:</strong> {name}</p>
                                 <p><strong>Booking id:</strong> {booking.id}</p>
                                 <p><strong>Drop Off:</strong> {moment(check_in_date_time).format('llll')}</p>

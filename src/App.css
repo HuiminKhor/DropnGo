@@ -816,6 +816,10 @@ box-shadow: 0px 2px 4px -1px rgba(0,0,0,0), 0px 4px 5px 0px rgba(0,0,0,0), 0px 1
 
 }
 
+.MoveStatus {
+  margin-bottom: 10px !important;
+
+}
 
 
 @media screen and (max-width: 480px) {

@@ -164,10 +164,10 @@ const UserProfile = () => {
 
                                 </div>                           
                             </CardBody> */}
-
+ 
                             <CardBody>
                                     <div className="product">
-                                        <p style={{backgroundColor: getStatus(book.status).colour, borderRadius: "10%", fontSize: "3.0em"}}><strong>{getStatus(book.status).status}</strong></p>
+                                        <p style={{backgroundColor: getStatus(book.status).colour, fontSize: "3.0em", color:"white", justifyContent:"center", textTransform:"uppercase"}}><strong style={{marginBottom:"10px"}}>{getStatus(book.status).status}</strong></p>
                                         <p><strong>Store Name:</strong> {book.store.name}</p>
                                         <p><strong>Street:</strong> {book.store.building_number},{book.store.street_name}</p>
                                         <p><strong>City:</strong>{book.store.city}</p>
@@ -199,7 +199,7 @@ const UserProfile = () => {
                         <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
                         <CardBody>
                                     <div className="product">
-                                        <p style={{backgroundColor: getStatus(book.status).colour, borderRadius: "10%", fontSize: "3.0em"}}><strong>{getStatus(book.status).status}</strong></p>
+                                        <p style={{backgroundColor: getStatus(book.status).colour, fontSize: "3.0em", color:"white", justifyContent:"center", textTransform:"uppercase"}}><strong style={{marginBottom:"10px"}}>{getStatus(book.status).status}</strong></p>
                                         <p><strong>Store Name:</strong> {book.store.name}</p>
                                         <p><strong>Street:</strong> {book.store.building_number},{book.store.street_name}</p>
                                         <p><strong>City:</strong>{book.store.city}</p>
