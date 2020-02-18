@@ -58,7 +58,7 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
             setStatus(2)
         })
         .catch(error => {
-            console.log(error.response.data)
+            console.log(error)
             setIsLoading(false)
         })
     }
@@ -75,7 +75,7 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
             setStatus(3)
         })
         .catch(error => {
-            console.log(error.response.data)
+            console.log(error)
         })
     }
     
@@ -91,7 +91,7 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
                 setIsLoading(false)
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error)
             })
     }, [id])
 
