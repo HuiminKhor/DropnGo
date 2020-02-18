@@ -129,7 +129,7 @@ const LuggageStorage = ({setMessage , setOpenAlert , setColor}) => {
               </div>
             } 
               <div className="ErrorNoStore">{locError === "Store doesn't exist" ? "Sorry, there are no stores for that location" : null }</div>
-            }
+            
             </>
             }
 

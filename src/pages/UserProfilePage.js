@@ -78,7 +78,7 @@ const UserProfile = () => {
         axios.get(`https://dropandgo.herokuapp.com/api/v1/bookings?user_id=${currentUser.id}`)
 
             .then(result => {
-                // console.log(result)
+                console.log(result)
                 let booking = result.data.filter( (book=> (book.status!==3) ) )  
                 setBooking(booking)
                 let booking2 = result.data.filter( (book=> (book.status===3)))
@@ -168,17 +168,19 @@ const UserProfile = () => {
                             <CardBody>
                                     <div className="product">
                                         <p style={{backgroundColor: getStatus(book.status).colour, borderRadius: "10%", fontSize: "3.0em"}}><strong>{getStatus(book.status).status}</strong></p>
+                                        <p><strong>Store Name:</strong> {book.store.name}</p>
+                                        <p><strong>Street:</strong> {book.store.building_number},{book.store.street_name}</p>
+                                        <p><strong>City:</strong>{book.store.city}</p>
                                         <p><strong>Drop Off:</strong> {moment(book.check_in_date_time).format('llll')}</p>
                                         <p><strong>Pick Up:</strong> {moment(book.check_out_date_time).format('llll')}</p>
                                         <p><strong>Luggage:</strong> {book.number_of_bag}</p>
                                         <p><strong>Price:</strong> RM{book.price}</p>
-                                        <p><strong>Address:</strong> {book.store.area}</p>
                                         <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
                                     </div>
                             </CardBody>
 
                             <div style={{textAlign:"center", marginTop:"20px"}}>
-                                <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={()=>toggle(book.id)} >View Qr Code</Button>
+                                <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={()=>toggle(book.id)} >View QR Code</Button>
                             </div>
                         </Card>
                     </div>
@@ -198,17 +200,19 @@ const UserProfile = () => {
                         <CardBody>
                                     <div className="product">
                                         <p style={{backgroundColor: getStatus(book.status).colour, borderRadius: "10%", fontSize: "3.0em"}}><strong>{getStatus(book.status).status}</strong></p>
+                                        <p><strong>Store Name:</strong> {book.store.name}</p>
+                                        <p><strong>Street:</strong> {book.store.building_number},{book.store.street_name}</p>
+                                        <p><strong>City:</strong>{book.store.city}</p>
                                         <p><strong>Drop Off:</strong> {moment(book.check_in_date_time).format('llll')}</p>
                                         <p><strong>Pick Up:</strong> {moment(book.check_out_date_time).format('llll')}</p>
                                         <p><strong>Luggage:</strong> {book.number_of_bag}</p>
                                         <p><strong>Price:</strong> {book.price}</p>
-                                        <p><strong>Address:</strong> {book.store.area}</p>
                                         <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
                                     </div>
                             </CardBody>
 
                         <div style={{textAlign:"center", marginTop:"20px"}}>
-                            <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={()=>toggle(book.id)} >View Qr Code</Button>
+                            <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={()=>toggle(book.id)} >View QR Code</Button>
                         </div>
                     </Card>
                 </div>
