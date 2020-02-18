@@ -168,6 +168,7 @@ const UserProfile = () => {
                             <CardBody>
                                     <div className="product">
                                         <p style={{backgroundColor: getStatus(book.status).colour, fontSize: "3.0em", color:"white", justifyContent:"center", textTransform:"uppercase"}}><strong style={{marginBottom:"10px"}}>{getStatus(book.status).status}</strong></p>
+                                        <p><strong>Booking ID:</strong> {book.id}</p>
                                         <p><strong>Store Name:</strong> {book.store.name}</p>
                                         <p><strong>Street:</strong> {book.store.building_number},{book.store.street_name}</p>
                                         <p><strong>City:</strong>{book.store.city}</p>
@@ -200,6 +201,7 @@ const UserProfile = () => {
                         <CardBody>
                                     <div className="product">
                                         <p style={{backgroundColor: getStatus(book.status).colour, fontSize: "3.0em", color:"white", justifyContent:"center", textTransform:"uppercase"}}><strong style={{marginBottom:"10px"}}>{getStatus(book.status).status}</strong></p>
+                                        <p><strong>Booking ID:</strong> {book.id}</p>
                                         <p><strong>Store Name:</strong> {book.store.name}</p>
                                         <p><strong>Street:</strong> {book.store.building_number},{book.store.street_name}</p>
                                         <p><strong>City:</strong>{book.store.city}</p>

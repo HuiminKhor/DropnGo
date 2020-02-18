@@ -48,7 +48,7 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
     const checkIn = () => {
         // to handle check in
         axios({
-            url: `http://dropandgo.herokuapp.com/api/v1/bookings/${id}/update/?status=2`,
+            url: `https://dropandgo.herokuapp.com/api/v1/bookings/${id}/update/?status=2`,
             method: 'get',
         })
         .then(result =>{
@@ -65,7 +65,7 @@ const VendorCheck = ({ setMessage, setOpenAlert, setColor }) => {
 
     const checkOut = () => {
         axios({
-            url: `http://dropandgo.herokuapp.com/api/v1/bookings/${id}/update/?status=3`,
+            url: `https://dropandgo.herokuapp.com/api/v1/bookings/${id}/update/?status=3`,
             method: 'get',
         })
         .then(result =>{
