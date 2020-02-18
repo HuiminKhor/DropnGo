@@ -8,7 +8,7 @@ const Qrgen = (props) => {
     className,
     modal,
     toggle,
-    booking_id
+    booking_id,
   } = props;
 
 
@@ -17,7 +17,7 @@ const Qrgen = (props) => {
       {/* <h1>{props.booking_id}</h1>
       <MyQr id={booking_id}/> */}
       <Modal isOpen={modal} toggle={toggle} className={className} style={{position:"absolute", top:"50%", left:"50%",  transform: "translate(-50%, -50%)"}}>
-        <ModalHeader toggle={toggle} style={{textAlign:"center"}}>Luggage Location</ModalHeader>
+        <ModalHeader toggle={toggle} style={{textAlign:"center"}}> Show This QR Code</ModalHeader>
         <ModalBody style={{textAlign:"center"}}>
             <MyQr id={booking_id}/>
             <p className="showQrCode">Show this QR code at the counter from the store that you have booked to store and retrieve your luggage</p>
