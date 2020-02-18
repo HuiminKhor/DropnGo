@@ -9,43 +9,6 @@ import LoadingIndicator from '../components/LoadingIndicator'
 import BOOKINGSTATUSES from '../constants/BookingStatuses'
 
 
-
-// const liStyle = {
-//     display: "flex",
-//     listStyleType: "none"
-// }
-
-// const liStyle2 = {
-//     display:"flex",
-//     marginLeft:"20px"
-
-// }
-
-
-// state = {
-//     booking: null
-// };
-
-
-// const book = () => {
-//     axios.get('http://localhost:5000/api/v1/bookings/new')
-//             .then(result => {
-//                 console.log(result)
-//                 this.setState({
-//                     booking: result.data
-//                 })
-//             })
-        
-// }
-
-// book()
-
-// a = [1, 2, 3]
-// a.map(item => {
-//     return <p>{item}</p>
-// })
-
-
 const UserProfile = () => {
     const { currentUser} = React.useContext(User)
     // console.log(currentUser)
@@ -125,7 +88,7 @@ const UserProfile = () => {
             { Loading ? 
               <LoadingIndicator  /> :  
             <>
-            { booking.length !== 0 ?
+            { booking.length !== 0 || booking2.length !== 0 ?
             <>
                 
             {
@@ -138,32 +101,7 @@ const UserProfile = () => {
                     { booking.map((book=>(
                         <div key={book.id}>
                         <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
-                    <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
-                            {/* <CardBody style={{display: "flex", justifyContent: "center"}}>
-                                <div  style={btnStyle}>
-                                        <div scope="row">
-                                            <div className="leftVariable">Drop off</div>
-                                            <div className="leftVariable">Pick up</div>
-                                            <div className="leftVariable">Luggage</div>
-                                            <div className="leftVariable">Price</div>
-                                            <div className="leftVariable">Address</div>
-                                            <div className="leftVariable">Operating hours</div>
-                                            <div className="leftVariable">Status</div>
-        
-                                        </div>
-                                        <div scope="row" style={btnStyle2}>
-                                            <div className="rightVariable">{moment(book.check_in_date_time).format('llll')}</div>
-                                            <div className="rightVariable">{moment(book.check_out_date_time).format('llll')}</div>
-                                            <div className="rightVariable">{book.number_of_bag}</div>
-                                            <div className="rightVariable">{book.price}</div>
-                                            <div className="rightVariable">{book.store.area}</div>
-                                            <div className="rightVariable">{book.store.opening_hours}</div>
-                                            <div className="rightVariable">{book.status===1 ? "Not Check in" : "Checked in "}</div>
-        
-                                        </div>
-
-                                </div>                           
-                            </CardBody> */}
+                            <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
  
                             <CardBody>
                                     <div className="product">
@@ -196,9 +134,9 @@ const UserProfile = () => {
                     <>
                 { booking2.map((book=>(
                     <div key={book.id}>
-                    <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
-                        <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
-                        <CardBody>
+                        <Card style={{border:"1px solid #40739E", marginRight:"5vw", marginLeft:"5vw", paddingBottom:"20px", borderRadius:"10px", marginTop:"10px"}}>
+                            <CardHeader style={{fontWeight:"bold", textAlign:"center", fontSize:"2rem"}}>Luggage Station at {book.store.area}</CardHeader>
+                                <CardBody>
                                     <div className="product">
                                         <p style={{backgroundColor: getStatus(book.status).colour, fontSize: "3.0em", color:"white", justifyContent:"center", textTransform:"uppercase"}}><strong style={{marginBottom:"10px"}}>{getStatus(book.status).status}</strong></p>
                                         <p><strong>Booking ID:</strong> {book.id}</p>
@@ -211,13 +149,12 @@ const UserProfile = () => {
                                         <p><strong>Price:</strong> {book.price}</p>
                                         <p><strong>Operating Hours:</strong> {book.store.opening_hours}</p>
                                     </div>
-                            </CardBody>
-
-                        <div style={{textAlign:"center", marginTop:"20px"}}>
-                            <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={()=>toggle(book.id)} >View QR Code</Button>
-                        </div>
-                    </Card>
-                </div>
+                                </CardBody>
+                                <div style={{textAlign:"center", marginTop:"20px"}}>
+                            {/* <Button style={{textAlign:"center", color:"#fff", background:"#40739E", border:"1px solid #40739E", width: "140px", fontWeight:"bold", fontSize:"1.5rem"}} onClick={()=>toggle(book.id)} >View QR Code</Button> */}
+                            </div>
+                        </Card>
+                    </div>
                  ))) 
                 }
                 </>
